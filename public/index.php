@@ -29,7 +29,29 @@
 		
 		<p>Not after a cuppa? Why not pick an artist to listen instead!</p>
 		
-		<ul class="brew-list" id="brewList"></ul>
+		<ul class="brew-list" id="brewList">
+			
+			<?php
+				
+				$cookie = $_COOKIE;
+				$id = 0;
+				
+				if($_COOKIE != '') {
+					
+					foreach($cookie as $cheb) {
+						
+						$id++;
+			?>
+			<li class="option-<?php echo $id; ?>"><?php echo $cheb; ?></li>
+			<?php			
+					}
+					
+				} else {
+
+				}
+			?>
+			
+		</ul>
 		
 		<form>
 			<input id="dataInput" placeholder="Add another name" type="text" />

@@ -6,9 +6,11 @@ $(document).ready(function() {
 	var display = document.getElementById('brewList');
 	
 	oButton.onclick = function() {
-		$.cookie('test', data.value);
+		$.cookie('brewer_number_' + id, data.value);
+		$.cookie('brewer_total', id);
 		display.innerHTML += '<li class="option-' + id + '">' + data.value + '</li>';
 	}
+
 
 	$('#addBrewer').click(function() {
 		id++;
@@ -27,10 +29,12 @@ $(document).ready(function() {
 		var randomnum = Math.floor(Math.random()*elemlength);
 		var randomitem = brewlist[randomnum];
 		$(randomitem).addClass('pickme');
+		console.log(randomnum);
 	});
 	
 	$('#clear-list').click(function() {
-		$.removeCookie('test');
+		$.removeCookie('brewer_number');
+		$.removeCookie('brewer_total');
 	});
 	
 });
