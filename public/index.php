@@ -32,7 +32,7 @@
 		<ul class="brew-list" id="brewList"></ul>
 		
 		<form>
-			<input id="dataInput" type="text" placeholder="Add another name" />
+			<input id="dataInput" placeholder="Add another name" type="text" />
 			<input id="addBrewer" type="submit" value="Add it!" />
 		</form>
 		
