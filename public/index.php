@@ -10,62 +10,35 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	
-	<link rel="stylesheet" href="style.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="library/css/style.css">
 	
-	<script type="text/javascript">
-		$(document).ready(function() {
-		
-			$("#addData").click(function() {
-				id++;
-				if($('#brewers li').length > 1 ) {
-					$("#brews").addClass("brewme");
-				}
-			});
-			
-			$("#brews").click(function() {
-				$(".brewerlist").addClass("roll");
-				$("#brewers li").css("background", "none");
-				$("#brewers li").removeClass("pickme");
-				var list = $("#brewers li").toArray();
-				var elemlength = list.length;
-				var randomnum = Math.floor(Math.random()*elemlength);
-				var randomitem = list[randomnum];
-				$(randomitem).addClass("pickme");
-			});
-			
-		});
-	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="library/js/libs/jquery.cookies.js"></script>
+	<script src="library/js/scripts.js"></script>
 	
 </head>
 <body>
 	
 	<header>
 		<h1>Get The Brews On</h1>
-		<?php //<img src="http://placehold.it/100x100/" alt="Teapot" /> ?>
 	</header>
 	
 	<section>
-		<header>
-			<h2>Who will it be?</h2>
-		</header>
 		
-		<ul id="brewers" class="brewerlist"></ul>
+		<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
 		
-		<input id="dataInput" type="text" placeholder="Add another name" /> <button id="addData" type="button">Add it!</button>
-		<script type="text/javascript">
+		<p>Not after a cuppa? Why not pick an artist to listen instead!</p>
 		
-			var id = 1;
-			var oButton = document.getElementById('addData');
-			var data = document.getElementById('dataInput');
-			var display = document.getElementById('brewers');
-			
-			oButton.onclick = function() {
-				display.innerHTML += "<li class='brewer-" + id + "'>" + data.value + "</li>";
-			}
-		</script>
+		<ul class="brew-list" id="brewList"></ul>
 		
-		<input id="brews" type="submit" value="Get The Brews On Already!" />
+		<form>
+			<input id="dataInput" type="text" placeholder="Add another name" />
+			<input id="addBrewer" type="submit" value="Add it!" />
+		</form>
+		
+		<a id="brews" href="#" title="#">Randomise my list</a>
+		
+		<a id="clear-list" href="#" title="#">Clear my list, start again!</a>
 		
 	</section>
 	
