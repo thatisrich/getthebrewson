@@ -26,12 +26,12 @@ $(document).ready(function() {
 	
 	$('#brews').click(function() {
 		$('.brew-list').addClass('brew-list__active');
-		$('.brew-list li').removeClass('pickme');
+		$('.brew-list li').removeClass('itsme');
 		var brewlist = $('.brew-list li').toArray();
 		var elemlength = brewlist.length;
 		var randomnum = Math.floor(Math.random()*elemlength);
 		var randomitem = brewlist[randomnum];
-		$(randomitem).addClass('pickme');
+		$(randomitem).addClass('itsme');
 		console.log(randomnum);
 	});
 	

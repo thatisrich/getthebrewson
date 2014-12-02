@@ -32,7 +32,7 @@
 		<div class="wrap">
 			
 			<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
-			<p>Not after a cuppa? Why not pick an artist to listen instead!</p>
+			<?php /* <p>Not after a cuppa? Why not pick an artist to listen instead!</p> */ ?>
 			
 			<ul class="brew-list" id="brewList">
 				<?php
@@ -54,8 +54,8 @@
 			
 			<?php include 'modules/form-addname.php'; ?>
 			
-			<a class="btn" id="brews" href="#" title="#">Randomise my list</a>
-			<a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a>
+			<a class="btn" id="brews" href="#" title="#">Pick a Brewer</a>
+			<?Php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
 			
 		</div>
 	</section>
