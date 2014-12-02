@@ -1,0 +1,19 @@
+/* =Buttons
+========================================= */
+.btn {
+	background-color: $primary;
+	border-color: $primary darken($primary, 8%) darken($primary, 15%);
+	border-style: solid;
+	border-radius: $border;
+	border-width: 1px;
+	color: $white;
+	display: block;
+	font-family: $fancy-sans;
+	margin: .5em 0;
+	padding: .4em 1em;
+	text-align: center;
+	&:hover,
+	&:focus {
+		background-color: darken($primary, 10%);
+	}
+}
