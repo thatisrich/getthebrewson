@@ -10,124 +10,62 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	
-	<link rel="stylesheet" href="style.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="library/css/style.css">
 	
-	<script type="text/javascript">
-		function createCookie(name,value,days) {
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime()+(days*24*60*60*1000));
-				var expires = "; expires="+date.toGMTString();
-			}
-			else var expires = "";
-			document.cookie = name+"="+value+expires+"; path=/";
-		}
-
-		function readCookie(name) {
-			var nameEQ = name + "=";
-			var ca = document.cookie.split(';');
-			for(var i=0;i < ca.length;i++) {
-				var c = ca[i];
-				while (c.charAt(0)==' ') c = c.substring(1,c.length);
-				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-			}
-			return null;
-		}
-
-		function eraseCookie(name) {
-			createCookie(name,"",-1);
-		}
-		
-		$(document).ready(function() {
-			
-			var id = 1;
-			var oButton = document.getElementById('addData');
-			var data = document.getElementById('dataInput');
-			var display = document.getElementById('brewers');
-			var brewerscookie = readCookie("brewmaker");
-			
-			console.log(readCookie("brewmaker")); 
-			
-			oButton.onclick = function() {
-				display.innerHTML += "<li class='brewer-" + id + "'>" + data.value + "</li>";
-				if(brewerscookie){
-					createCookie("brewmaker", brewerscookie + "," + data.value, 30);
-				}else{
-					createCookie("brewmaker", data.value, 30);
-				}
-				
-			}
-			
-			
-			if(brewerscookie){
-				var brewers = brewerscookie.split(",");
-				var arrayLength = brewers.length;
-				for (var i = 0; i < arrayLength; i++) {
-				    display.innerHTML += "<li class='brewer-" + id + "'>" + brewers[i] + "</li>";
-				    //Do something
-					id++;
-					if(id >= 3 ) {
-						$("#brews").addClass("brewme");
-						$("#startover").addClass("startover");
-					}
-				}
-				
-			}
-			$("#addData").click(function() {
-				id++;
-				if($('#brewers li').length > 1 ) {
-					$("#brews").addClass("brewme");
-					$("#startover").addClass("startover");
-				}
-				//Empty the text field - speeds up adding names
-				$('#dataInput').val("");
-			});
-			
-			$("#startover").click(function() {
-				eraseCookie("brewmaker");
-				location.reload();
-			});
-			
-			$("#brews").click(function() {
-				$(".brewerlist").addClass("roll");
-				$("#brewers li").css("background", "none");
-				$("#brewers li").removeClass("pickme");
-				var list = $("#brewers li").toArray();
-				var elemlength = list.length;
-				var randomnum = Math.floor(Math.random()*elemlength);
-				var randomitem = list[randomnum];
-				$(randomitem).addClass("pickme");
-			});
-			
-		});
-	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="library/js/libs/jquery.cookies.js"></script>
+	<script src="library/js/scripts.js"></script>
 	
 </head>
 <body>
 	
-	<header>
-		<h1>Get The Brews On</h1>
-		<?php //<img src="http://placehold.it/100x100/" alt="Teapot" /> ?>
+	<header class="">
+		<div class="wrap">
+			
+			<h1>Get The Brews On</h1>
+			
+		</div>
 	</header>
 	
-	<section>
-		<header>
-			<h2>Who will it be?</h2>
-		</header>
-		
-		<ul id="brewers" class="brewerlist"></ul>
-		
-		<input id="dataInput" type="text" placeholder="Add another name" /> <button id="addData" type="button">Add it!</button>
-		
-		<input id="brews" type="submit" value="Get The Brews On Already!" />
-		
-		<input id="startover" type="submit" value="Start Over" />
-		
+	<section class="">
+		<div class="wrap">
+			
+			<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
+			<?php /* <p>Not after a cuppa? Why not pick an artist to listen instead!</p> */ ?>
+			
+			<ul class="brew-list" id="brewList">
+				<?php
+					$cookies = $_COOKIE;
+					$id = 0;
+					
+					//var_dump($_COOKIE);
+						
+					if($_COOKIE != '') {
+						foreach($cookies as $cookie) {
+							$id++;
+				?>
+				<li class="option-<?php echo $id; ?>"><?php echo $cookie; ?></li>
+				<?php
+						}
+					}
+				?>
+			</ul>
+			
+			<?php include 'modules/form-addname.php'; ?>
+			
+			<a class="btn" id="brews" href="#" title="#">Pick a Brewer</a>
+			<?Php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
+			
+		</div>
 	</section>
 	
 	<footer>
-		<h3>Designed and built by <a href="http://www.cargocreative.co.uk" title="Visit Cargo Creative's Website">Cargo</a>.</h3>
+		<div class="wrap">
+			
+			<p>Delivered by <a href="http://www.cargocreative.co.uk" title="Visit Cargo Creative's Website">Cargo</a>.</p>
+			
+		</div>
 	</footer>
 
 </body>
