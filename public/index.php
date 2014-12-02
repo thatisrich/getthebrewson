@@ -10,6 +10,7 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	
+	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="library/css/style.css">
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -19,53 +20,52 @@
 </head>
 <body>
 	
-	<header>
-		<h1>Get The Brews On</h1>
+	<header class="">
+		<div class="wrap">
+			
+			<h1>Get The Brews On</h1>
+			
+		</div>
 	</header>
 	
-	<section>
-		
-		<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
-		
-		<p>Not after a cuppa? Why not pick an artist to listen instead!</p>
-		
-		<ul class="brew-list" id="brewList">
+	<section class="">
+		<div class="wrap">
 			
-			<?php
-				
-				$cookie = $_COOKIE;
-				$id = 0;
-				
-				if($_COOKIE != '') {
+			<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
+			<p>Not after a cuppa? Why not pick an artist to listen instead!</p>
+			
+			<ul class="brew-list" id="brewList">
+				<?php
+					$cookies = $_COOKIE;
+					$id = 0;
 					
-					foreach($cookie as $cheb) {
+					//var_dump($_COOKIE);
 						
-						$id++;
-			?>
-			<li class="option-<?php echo $id; ?>"><?php echo $cheb; ?></li>
-			<?php			
+					if($_COOKIE != '') {
+						foreach($cookies as $cookie) {
+							$id++;
+				?>
+				<li class="option-<?php echo $id; ?>"><?php echo $cookie; ?></li>
+				<?php
+						}
 					}
-					
-				} else {
-
-				}
-			?>
+				?>
+			</ul>
 			
-		</ul>
-		
-		<form>
-			<input id="dataInput" placeholder="Add another name" type="text" />
-			<input id="addBrewer" type="submit" value="Add it!" />
-		</form>
-		
-		<a id="brews" href="#" title="#">Randomise my list</a>
-		
-		<a id="clear-list" href="#" title="#">Clear my list, start again!</a>
-		
+			<?php include 'modules/form-addname.php'; ?>
+			
+			<a class="btn" id="brews" href="#" title="#">Randomise my list</a>
+			<a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a>
+			
+		</div>
 	</section>
 	
 	<footer>
-		<h3>Designed and built by <a href="http://www.cargocreative.co.uk" title="Visit Cargo Creative's Website">Cargo</a>.</h3>
+		<div class="wrap">
+			
+			<p>Delivered by <a href="http://www.cargocreative.co.uk" title="Visit Cargo Creative's Website">Cargo</a>.</p>
+			
+		</div>
 	</footer>
 
 </body>

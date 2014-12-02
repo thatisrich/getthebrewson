@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	
+	$(".add-name").submit(function(e) {
+	    e.preventDefault();
+	});
+	
 	var id = 1;
 	var oButton = document.getElementById('addBrewer');
 	var data = document.getElementById('dataInput');
@@ -7,7 +11,7 @@ $(document).ready(function() {
 	
 	oButton.onclick = function() {
 		$.cookie('brewer_number_' + id, data.value);
-		$.cookie('brewer_total', id);
+		//$.cookie('brewer_total', id);
 		display.innerHTML += '<li class="option-' + id + '">' + data.value + '</li>';
 	}
 
@@ -21,8 +25,7 @@ $(document).ready(function() {
 	});
 	
 	$('#brews').click(function() {
-		$('.brew-list').addClass('roll');
-		//$('.brew-list li').css('background', 'none');
+		$('.brew-list').addClass('brew-list__active');
 		$('.brew-list li').removeClass('pickme');
 		var brewlist = $('.brew-list li').toArray();
 		var elemlength = brewlist.length;
@@ -34,7 +37,7 @@ $(document).ready(function() {
 	
 	$('#clear-list').click(function() {
 		$.removeCookie('brewer_number');
-		$.removeCookie('brewer_total');
+		//$.removeCookie('brewer_total');
 	});
 	
 });

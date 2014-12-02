@@ -1,0 +1,14 @@
+/* =Buttons
+========================================= */
+.btn {
+	background-color: $primary;
+	border-radius: $border;
+	color: $white;
+	display: inline-block;
+	font-family: $fancy-sans;
+	padding: .4em 1em;
+	&:hover,
+	&:focus {
+		background-color: darken($primary, 10%);
+	}
+}

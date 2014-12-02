@@ -1,0 +1,25 @@
+form {
+	margin: 2em 0;
+	width: 100%;
+}
+
+input {
+	display: inline-block;
+	outline: none;
+	&[type="text"],
+	&[type="password"],
+	&[type="email"] {
+		background-color: $white;
+		border-color: $primary;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: $border;
+		padding: .4em 1em;
+		width: 75%;
+	}
+	&[type="submit"] {
+		border: 0;
+		width: 20%;
+		@extend .btn;
+	}
+}

@@ -1,0 +1,15 @@
+/* =Base
+========================================= */
+body {
+	background-image: url('../images/img-tea-stain.png');
+	background-position: right bottom;
+	background-repeat: no-repeat;
+	color: $text-color;
+	font-family: $body;
+}
+
+.wrap {
+	margin: 0 auto;
+	//max-width: 50.000em;
+	max-width: 25.000em;
+}
