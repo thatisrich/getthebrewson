@@ -13,10 +13,6 @@
 	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="library/css/style.css">
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="library/js/libs/jquery.cookies.js"></script>
-	<script src="library/js/scripts.js"></script>
-	
 </head>
 <body>
 	
@@ -34,23 +30,85 @@
 			<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
 			<?php /* <p>Not after a cuppa? Why not pick an artist to listen instead!</p> */ ?>
 			
-			<ul class="brew-list" id="brewList">
-				<?php
-					$cookies = $_COOKIE;
-					$id = 0;
+			
+			<?php
+				
+				// Set count variable. We'll use this shortly.
+				$count = 1;
+				
+				// Get all cookies
+				$cookies = $_COOKIE;
+				
+				// Dump em all
+				//var_dump($cookies);
+				
+				// If there are any cookies...
+				if($cookies != '') {
 					
-					//var_dump($_COOKIE);
+					// ...get the total number of names
+					$cookie_total = $_COOKIE['brewer_total'];
+					
+					// Set this varaible to equal the total number so that older names aren't replaced
+					$id = $cookie_total;
+					
+					//var_dump($cookies);
+							
+			?>
+			<ul class="brew-list" id="brewList">
+			<?php
+					
+					// Now that we have the numbers, lets start the loops.
+					foreach($cookies as $cookie) {
 						
+						// Compare the total number of cookies with the counter.
+						// If they aren't the same, run through them
+						if($count <= $cookie_total) {
+			?>
+				<li class="option-<?php echo $count; ?>"><?php echo $cookie; ?></li>
+			<?php
+						$count++;
+						
+						}
+						
+					}
+			?>
+			</ul>
+			<?php
+					
+				}
+				
+				/*
+			?>
+			<ul class="brew-list" id="brewList">
+				<?php					
+					
+					if($cookie_total) {
+						echo '<p>There are '. $cookie_total .' many names.</p>';
+					} else {
+						echo '<p>No cookies exist</p>';	
+					}
+					
 					if($_COOKIE != '') {
+						
 						foreach($cookies as $cookie) {
-							$id++;
+							
+							if($cookie_total != $count) {
+								$count++;
+								echo $count;
+							}
 				?>
 				<li class="option-<?php echo $id; ?>"><?php echo $cookie; ?></li>
 				<?php
 						}
+						
 					}
 				?>
 			</ul>
+			<?php
+				
+				*/
+			
+			?>
 			
 			<?php include 'modules/form-addname.php'; ?>
 			
@@ -67,6 +125,10 @@
 			
 		</div>
 	</footer>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="library/js/libs/jquery.cookies.js"></script>
+	<script src="library/js/scripts.js"></script>
 
 </body>
 </html>

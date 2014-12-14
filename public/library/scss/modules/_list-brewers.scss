@@ -4,10 +4,10 @@
 	padding: 0;
 	text-align: center;
 	li {
-		display: inline-block;
+		//display: inline-block;
 		padding: 0 .5em;
 		&::after {
-			content: ', ';
+			//content: ', ';
 		}
 	}
 }
