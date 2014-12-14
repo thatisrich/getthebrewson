@@ -4,17 +4,18 @@ $(document).ready(function() {
 	    e.preventDefault();
 	});
 	
-	var id = 1;
+	// Set ID based on current number of list items
+	var count = $(".brew-list li").length;
+	var id = count + 1;
 	var oButton = document.getElementById('addBrewer');
 	var data = document.getElementById('dataInput');
 	var display = document.getElementById('brewList');
 	
 	oButton.onclick = function() {
 		$.cookie('brewer_number_' + id, data.value);
-		//$.cookie('brewer_total', id);
+		$.cookie('brewer_total', id);
 		display.innerHTML += '<li class="option-' + id + '">' + data.value + '</li>';
 	}
-
 
 	$('#addBrewer').click(function() {
 		id++;
@@ -37,7 +38,7 @@ $(document).ready(function() {
 	
 	$('#clear-list').click(function() {
 		$.removeCookie('brewer_number');
-		//$.removeCookie('brewer_total');
+		$.removeCookie('brewer_total');
 	});
 	
 });
