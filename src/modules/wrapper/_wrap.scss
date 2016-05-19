@@ -1,0 +1,13 @@
+.wrap {
+	margin: 0 auto;
+	padding: 0 5%;
+	
+	@media only screen and (min-width: $wrap_restrict) {
+		
+		max-width: $wrap_restrict;
+		padding-left: 0;
+		padding-right: 0;
+		
+	}
+
+}

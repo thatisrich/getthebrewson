@@ -5,6 +5,16 @@ html {
 	position: relative;
 }
 
+html {
+	box-sizing: border-box;
+	height: 100%;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
 body {
 	background-image: url('../images/img-tea-stain.png');
 	background-position: right bottom;
@@ -12,11 +22,4 @@ body {
 	color: $text-color;
 	font-family: $body;
 	position: relative;
-}
-
-.wrap {
-	margin: 0 auto;
-	//max-width: 50.000em;
-	max-width: 25.000em;
-	width: 90%;
 }

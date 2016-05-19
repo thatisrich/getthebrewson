@@ -1,0 +1,55 @@
+// alerts and notices
+%alert {
+  margin: .7em;
+  padding: .7em;
+  border: 1px solid;
+}
+
+.alert-help {
+  @extend %alert;
+  background: $alert-yellow;
+  border-color: darken($alert-yellow, 5%);
+}
+
+.alert-info {
+  @extend %alert;
+  background: $alert-blue;
+  border-color: darken($alert-blue, 5%);
+}
+
+.alert-error {
+  @extend %alert;
+  border-color: darken($alert-red, 5%);
+}
+
+.alert-success {
+  @extend %alert;
+  background: $alert-green;
+  border-color: darken($alert-green, 5%);
+}
+
+.go-live_message {
+	display: block;
+	padding: 2em 10%;
+	text-align: center;
+	p {
+		font-family: Helvetica, Arial, sans-serif;
+		font-weight: 600;
+		margin: 0;
+		text-transform: uppercase;
+	}
+}
+
+.go-live_error {
+	background-color: $alert-red;
+	p {
+		color: darken($alert-red, 10%);
+	}
+}
+
+.go-live_notice {
+	background-color: $alert-blue;
+	p {
+		color: darken($alert-blue, 20%);
+	}
+}
