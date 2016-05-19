@@ -1,26 +1,32 @@
 form {
+	display: flex;
 	margin: 2em 0;
+	justify-content: space-between;
 	width: 100%;
 }
 
 input {
 	display: inline-block;
 	outline: none;
+
 	&[type="text"],
 	&[type="password"],
 	&[type="email"] {
 		background-color: $white;
-		border-color: $primary;
+		border-color: $brand-primary;
 		border-style: solid;
 		border-width: 1px;
 		border-radius: $border;
+		display: block;
 		padding: .4em 1em;
 		width: 60%;
 	}
+
 	&[type="submit"] {
 		@extend .btn;
-		display: inline-block;
+		display: block;
 		margin: 0;
 		width: 35%;
 	}
+
 }

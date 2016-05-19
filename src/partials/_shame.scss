@@ -1,0 +1,17 @@
+/* =Shame-city
+==========================================*/
+
+/*
+	
+	The idea of this shame file is to put any quick fixes here that can then be fixed in future.
+	
+	Remember to comment the hack and leave as much information about the issue where possible.
+	
+	An example of this would be:
+	
+*/
+
+// A site wide fix to make all image fit their container
+img {
+	max-width: 100%;
+}
