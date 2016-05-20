@@ -27,35 +27,42 @@
 	<section class="">
 		<div class="wrap">
 
-			<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
-			<?php /* <p>Not after a cuppa? Why not pick an artist to listen instead!</p> */ ?>
+			<div class="brew--action">
+
+				<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
+				<?php /* <p>Not after a cuppa? Why not pick an artist to listen instead!</p> */ ?>
 
 
-			<?php
+				<?php
 
-				// Set count variable. We'll use this shortly.
-				$count = 1;
+					// Set count variable. We'll use this shortly.
+					$count = 1;
 
-				// Get all cookies
-				$cookies = $_COOKIE;
+					// Get all cookies
+					$cookies = $_COOKIE;
 
-				// Dump em all
-				//var_dump($cookies);
+					// Dump em all
+					//var_dump($cookies);
 
-				// If there are any cookies...
-				if($cookies != '') {
+					// If there are any cookies...
+					if(!empty($cookies)) {
 
-					// ...get the total number of names
-					$cookie_total = $_COOKIE['brewer_total'];
+						// ...get the total number of names
+						$cookie_total = $_COOKIE['brewer_total'];
+
+					} else {
+
+						// If none, set 0
+						$cookie_total = 0;
+
+					}
 
 					// Set this varaible to equal the total number so that older names aren't replaced
 					$id = $cookie_total;
 
-					//var_dump($cookies);
-
-			?>
-			<ul class="brew-list" id="brewList">
-			<?php
+				?>
+				<ul class="brew-list" id="brewList">
+				<?php
 
 					// Now that we have the numbers, lets start the loops.
 					foreach($cookies as $cookie) {
@@ -63,61 +70,44 @@
 						// Compare the total number of cookies with the counter.
 						// If they aren't the same, run through them
 						if($count <= $cookie_total) {
-			?>
-				<li class="option-<?php echo $count; ?>"><?php echo $cookie; ?></li>
-			<?php
+
+				?>
+					<li class="option-<?php echo $count; ?>"><?php echo $cookie; ?></li>
+				<?php
+
 						$count++;
 
 						}
 
 					}
-			?>
-			</ul>
-			<?php
 
-				}
-
-				/*
-			?>
-			<ul class="brew-list" id="brewList">
+				?>
+				</ul>
 				<?php
 
-					if($cookie_total) {
-						echo '<p>There are '. $cookie_total .' many names.</p>';
-					} else {
-						echo '<p>No cookies exist</p>';
-					}
+					include 'modules/form-addname.php';
 
-					if($_COOKIE != '') {
-
-						foreach($cookies as $cookie) {
-
-							if($cookie_total != $count) {
-								$count++;
-								echo $count;
-							}
 				?>
-				<li class="option-<?php echo $id; ?>"><?php echo $cookie; ?></li>
-				<?php
-						}
 
-					}
-				?>
-			</ul>
-			<?php
+				<a class="btn" id="brews" href="#" title="Shuffle through the names and pick a brewer!">Pick a Brewer</a>
+				<?php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
 
-				*/
+			</div>
 
-			?>
-
-			<?php include 'modules/form-addname.php'; ?>
-
-			<a class="btn" id="brews" href="#" title="#">Pick a Brewer</a>
-			<?Php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
+			<div class="kettle--outer hidden">
+				<div class="kettle">
+					<span class="kettle--lid"></span>
+					<span class="kettle--body"></span>
+					<span class="kettle--stove"></span>
+					<span class="kettle--flames"></span>
+					<p class="kettle--name"></p>
+				</div>
+			</div>
 
 		</div>
 	</section>
 
+	<?php /*
 	<footer>
 		<div class="wrap">
 
@@ -125,6 +115,7 @@
 
 		</div>
 	</footer>
+	*/ ?>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="library/js/libs/jquery.cookies.js"></script>

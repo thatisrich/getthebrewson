@@ -1,3 +1,13 @@
+.brew--action {
+	display: block;
+	@include transition(all $transition-time ease-in-out);
+
+	&.push {
+		padding-top: 340px;
+	}
+
+}
+
 .brew-list {
 	list-style: none;
 	margin: 2em 0;
@@ -12,13 +22,18 @@
 	}
 }
 
+/*
 .brew-list__active {
+
 	li {
 		font-size: 1em;
 		opacity: .5;
 	}
+
 	.itsme {
 		font-size: 2em;
 		opacity: 1;
 	}
+
 }
+*/
