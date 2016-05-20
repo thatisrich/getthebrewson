@@ -78,8 +78,8 @@
 		animation-timing-function: linear;
 	}
 
-	.boiling & {
-		animation-delay: 2s;
+	.boiled & {
+		animation-delay: 1s;
 		animation-duration: 1s;
 		animation-iteration-count: infinite;
 		animation-name: lidRattle;
@@ -115,7 +115,6 @@
 		}
 	}
 
-	/*
 	&::after { // Steam
 		background-image: url('../images/img-steam-animation.gif');
 		background-repeat: no-repeat;
@@ -129,12 +128,11 @@
 		top: -29px;
 		width: 240px;
 
-		.boiling & {
+		.boiled & {
 			opacity: 1;
 		}
 
 	}
-	*/
 
 	.fall-in & {
 		animation-duration: 1s;

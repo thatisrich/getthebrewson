@@ -107,6 +107,10 @@ function getBrewer() {
 	}, 2000);
 
 	setTimeout(function() {
+		jQuery('.kettle').addClass('boiled');
+	}, 4000);
+
+	setTimeout(function() {
 		jQuery('.kettle--name').addClass('show');
 	}, 6000);
 
