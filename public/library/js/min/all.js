@@ -72,11 +72,13 @@ function rollForBrewer() {
 
 		setTimeout(function() {
 			getBrewer();
+			jQuery('.kettle').removeClass('fall-in');
 		}, 1000);
 
 	} else {
 
 		jQuery('.kettle').removeClass('boiling');
+		jQuery('.kettle').removeClass('boiled');
 		jQuery('.kettle--name').removeClass('show');
 
 		getBrewer();
