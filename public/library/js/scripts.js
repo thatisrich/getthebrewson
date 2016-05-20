@@ -66,15 +66,26 @@ function rollForBrewer() {
 		jQuery('.brew--action').addClass('push');
 
 		setTimeout(function() {
+			jQuery('.kettle').addClass('fall-in');
 			jQuery('.kettle--outer').removeClass('hidden');
 		}, 500);
+
+		setTimeout(function() {
+			getBrewer();
+		}, 1000);
 
 	} else {
 
 		jQuery('.kettle').removeClass('boiling');
 		jQuery('.kettle--name').removeClass('show');
 
+		getBrewer();
+
 	}
+
+}
+
+function getBrewer() {
 
 	jQuery('.brew-list').addClass('brew-list__active');
 	jQuery('.brew-list li').removeClass('itsme');
@@ -93,7 +104,8 @@ function rollForBrewer() {
 
 	setTimeout(function() {
 		jQuery('.kettle').addClass('boiling');
-	}, 3000);
+	}, 2000);
+
 	setTimeout(function() {
 		jQuery('.kettle--name').addClass('show');
 	}, 6000);

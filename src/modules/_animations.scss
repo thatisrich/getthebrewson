@@ -7,6 +7,7 @@
     100% { opacity: 0; }
 }
 
+
 /* =Kettle Flames
 ==========================================*/
 @keyframes flameOn {
@@ -15,16 +16,55 @@
     66% { background-position: -172px -551px; }
 }
 
+
 /* =Kettle Lid
 ==========================================*/
 @keyframes lidRattle {
-    0% { transform: rotate(0); top: -20px; }
+    0% { transform: rotate(0); bottom: 182px; }
     10% { transform: rotate(-1deg); }
     20% { transform: rotate(1deg); }
-    30% { transform: rotate(-2deg); top: -28px; }
+    30% { transform: rotate(-2deg); bottom: 194px; }
     40% { transform: rotate(2deg); }
     50% { transform: rotate(-3deg); }
-    60% { transform: rotate(1deg); top: -20px; }
+    60% { transform: rotate(1deg); bottom: 182px; }
     70% { transform: rotate(-1deg); }
     80% { transform: rotate(0deg); }
+}
+
+
+/* =Lid Drop In
+==========================================*/
+@keyframes lidDrop {
+	0% { bottom: 300px; opacity: 0; }
+	39% { opacity: 0; }
+	40% { bottom: 300px; transform: rotate(0); opacity: 1; }
+	60% { bottom: 182px; transform: rotate(15deg); }
+	62% { transform: rotate(0); }
+	66% { transform: rotate(-10deg); bottom: 200px; }
+	74% { transform: rotate(9deg); bottom: 182px;  }
+	78% { transform: rotate(-7deg); bottom: 190px; }
+	82% { transform: rotate(-5deg); bottom: 182px; }
+	84% { transform: rotate(4deg); bottom: 186px; }
+	87% { transform: rotate(-2deg); bottom: 182px; }
+	89% { transform: rotate(0); }
+}
+
+
+/* =Kettle Drop In
+==========================================*/
+@keyframes kettleDrop {
+    0% { bottom: 154px; transform: rotate(0); }
+	40% { bottom: 34px; transform: rotate(-6deg); }
+	42% { transform: rotate(0); bottom: 40px; }
+	46% { transform: rotate(5deg); bottom: 34px; }
+	54% { transform: rotate(-5deg); bottom: 36px; }
+	58% { transform: rotate(4deg); bottom: 34px; }
+	62% { transform: rotate(-3deg); }
+	64% { transform: rotate(3deg); }
+	67% { transform: rotate(1deg); }
+	69% { transform: rotate(-1deg); }
+	72% { transform: rotate(1deg); }
+	74% { transform: rotate(-1deg); }
+	75% { transform: rotate(1deg); }
+	76% { transform: rotate(0); }
 }

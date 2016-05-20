@@ -96,8 +96,8 @@
 
 			<div class="kettle--outer hidden">
 				<div class="kettle">
+					<span class="kettle--lid"></span>
 					<span class="kettle--body"></span>
-					<span class="kettle--glow"></span>
 					<span class="kettle--stove"></span>
 					<span class="kettle--flames"></span>
 					<p class="kettle--name"></p>
