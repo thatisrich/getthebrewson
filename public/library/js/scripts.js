@@ -77,7 +77,7 @@ function rollForBrewer() {
 	var brewerName			= jQuery(randomitem).text();
 
 	jQuery(randomitem).addClass('itsme');
-	jQuery('.brew--action').fadeOut('fast');
+	jQuery('.brew--action').addClass('push');
 
 	setTimeout(function() {
 		jQuery('.kettle--outer').removeClass('hidden');

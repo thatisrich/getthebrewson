@@ -102,7 +102,6 @@
 					<span class="kettle--flames"></span>
 					<p class="kettle--name"></p>
 				</div>
-				<a class="btn" id="reRoll" href="#" title="Shuffle through the names and pick a brewer!">Roll again</a>
 			</div>
 
 		</div>
