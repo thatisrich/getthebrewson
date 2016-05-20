@@ -19,7 +19,7 @@ $(document).ready(function() {
 		$.cookie('brewer_number_' + id, data.value);
 		$.cookie('brewer_total', id);
 		display.innerHTML += '<li class="option-' + id + '">' + data.value + '</li>';
-	}
+	};
 
 
 
@@ -50,13 +50,7 @@ $(document).ready(function() {
 
 	$('#reRoll').click(function() {
 
-		$('.kettle').removeClass('boiling');
-		$('.kettle--name').removeClass('show');
-
-		setTimeout(function() {
-			rollForBrewer();
-		}, 1000);
-
+		rollForBrewer();
 
 	});
 
@@ -66,6 +60,21 @@ $(document).ready(function() {
 
 
 function rollForBrewer() {
+
+	if(jQuery('.kettle--outer').hasClass('hidden')) {
+
+		jQuery('.brew--action').addClass('push');
+
+		setTimeout(function() {
+			jQuery('.kettle--outer').removeClass('hidden');
+		}, 500);
+
+	} else {
+
+		jQuery('.kettle').removeClass('boiling');
+		jQuery('.kettle--name').removeClass('show');
+
+	}
 
 	jQuery('.brew-list').addClass('brew-list__active');
 	jQuery('.brew-list li').removeClass('itsme');
@@ -77,10 +86,8 @@ function rollForBrewer() {
 	var brewerName			= jQuery(randomitem).text();
 
 	jQuery(randomitem).addClass('itsme');
-	jQuery('.brew--action').addClass('push');
 
 	setTimeout(function() {
-		jQuery('.kettle--outer').removeClass('hidden');
 		jQuery('.kettle--name').text(brewerName);
 	}, 500);
 
