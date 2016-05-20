@@ -2,6 +2,8 @@
 
 @import "partials/variables";
 
+@import "partials/mixins";
+
 @import "modules/typography";
 
 @import "modules/wrapper/wrap";
@@ -18,6 +20,10 @@
 @import "modules/images";
 
 @import "modules/base";
+
+@import "modules/objects/objects";
+
+@import "modules/animations";
 
 
 

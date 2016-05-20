@@ -1,0 +1,30 @@
+/* =Kettle Glow
+==========================================*/
+@keyframes kettleGlow {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* =Kettle Flames
+==========================================*/
+@keyframes flameOn {
+    0% { background-position: -172px -486px; }
+    33% { background-position: -172px -519px; }
+    66% { background-position: -172px -551px; }
+}
+
+/* =Kettle Lid
+==========================================*/
+@keyframes lidRattle {
+    0% { transform: rotate(0); top: -20px; }
+    10% { transform: rotate(-1deg); }
+    20% { transform: rotate(1deg); }
+    30% { transform: rotate(-2deg); top: -28px; }
+    40% { transform: rotate(2deg); }
+    50% { transform: rotate(-3deg); }
+    60% { transform: rotate(1deg); top: -20px; }
+    70% { transform: rotate(-1deg); }
+    80% { transform: rotate(0deg); }
+}

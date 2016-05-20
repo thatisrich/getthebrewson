@@ -1,0 +1,161 @@
+/* =Kettle
+==========================================*/
+.kettle--outer {
+	left: 0;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	@include transition(all $transition-time ease-in-out);
+
+	&.hidden {
+		opacity: 0;
+		z-index: -2;
+	}
+
+}
+
+.kettle {
+	display: block;
+	height: 300px;
+	margin: 0 auto;
+	position: relative;
+	opacity: 1;
+	width: 420px;
+	z-index: 1;
+	@include transition(all $transition-time ease-in-out);
+}
+
+.kettle--body,
+.kettle--body::before,
+.kettle--glow,
+.kettle--stove,
+.kettle--flames {
+	background-image: url('../images/sprite-kettle.png');
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	display: block;
+	position: absolute;
+}
+
+.kettle--name {
+	color: #8e8e8e;
+	display: block;
+	font-size: 2.4em;
+	font-weight: bold;
+	left: 137px;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	text-align: center;
+	text-shadow: 0 -1px 0px darken(#8e8e8e, 15%), 0 1px 0px lighten(#8e8e8e, 30%);
+	text-transform: uppercase;
+	top: 172px;
+	width: 180px;
+	z-index: 4;
+	@include transition(all $transition-time ease-in-out);
+
+	&.show {
+		opacity: 1;
+	}
+
+}
+
+.kettle--lid {
+
+}
+
+.kettle--body {
+	background-position: -88px -123px;
+	height: 176px;
+	left: 70px;
+	top: 90px;
+	width: 290px;
+	z-index: 2;
+
+	&::before {
+		background-position: -185px -34px;
+		content: 'lid';
+		height: 49px;
+		left: 98px;
+		text-indent: -999em;
+		top: -20px;
+		width: 110px;
+		z-index: 3;
+
+		.boiling & {
+			animation-delay: 1s;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-name: lidRattle;
+		}
+	}
+
+	&::after {
+		background-image: url('../images/img-steam-animation.gif');
+		background-repeat: no-repeat;
+		content: 'steam';
+		display: block;
+		height: 44px;
+		left: 64px;
+		opacity: 0;
+		position: absolute;
+		text-indent: -999em;
+		top: -29px;
+		width: 240px;
+	}
+
+	.boiling & {
+
+		&::after {
+			opacity: 1;
+		}
+
+	}
+
+}
+
+.kettle--glow {
+	background-position: -88px -581px;
+	height: 176px;
+	left: 70px;
+	opacity: 0;
+	top: 90px;
+	width: 290px;
+	z-index: 3;
+
+	.boiling & {
+		animation-delay: 1s;
+		animation-duration: 3.5s;
+		animation-iteration-count: infinite;
+		animation-name: kettleGlow;
+	}
+}
+
+.kettle--stove {
+	background-position: -18px -350px;
+	height: 66px;
+	left: 0;
+	top: 230px;
+	width: 420px;
+	z-index: 1;
+}
+
+.kettle--flames {
+	background-position: -172px -486px;
+	height: 20px;
+	opacity: 0;
+	left: 154px;
+	top: 253px;
+	width: 130px;
+	z-index: 2;
+
+	.boiling & {
+		animation-duration: .5s;
+		animation-iteration-count: infinite;
+		animation-name: flameOn;
+		animation-timing-function: step-start;
+		opacity: 1;
+	}
+
+}

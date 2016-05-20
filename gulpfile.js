@@ -164,7 +164,7 @@ gulp.task('serve', ['css'], function() {
 	*/
 	browserSync.init({
 		proxy: {
-			target: "http://getthebrewson.local",
+			target: "http://getthebrewson.mb",
 			ws: true
 		}
 	});
