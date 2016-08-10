@@ -13,6 +13,13 @@
 	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="library/css/style.css">
 
+	<?php
+
+		$url = $_SERVER['HTTP_HOST'];
+
+		if( $url == 'getthebrewson.co.uk' ){
+
+	?>
 	<!-- Google Tag Manager -->
 	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N2M8QZ"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -22,6 +29,8 @@
 	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-N2M8QZ');</script>
 	<!-- End Google Tag Manager -->
+
+	<?php } ?>
 
 </head>
 <body>
