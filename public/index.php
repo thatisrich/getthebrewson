@@ -12,7 +12,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="library/css/style.css">
-	
+
 	<!-- Google Tag Manager -->
 	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N2M8QZ"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -55,7 +55,7 @@
 					//var_dump($cookies);
 
 					// If there are any cookies...
-					if(!empty($cookies)) {
+					if( isset($_COOKIE['brewer_total']) ) {
 
 						// ...get the total number of names
 						$cookie_total = $_COOKIE['brewer_total'];
@@ -75,21 +75,23 @@
 				<?php
 
 					// Now that we have the numbers, lets start the loops.
-					foreach($cookies as $cookie) {
+					$i = 0;
+					do {
 
-						// Compare the total number of cookies with the counter.
-						// If they aren't the same, run through them
-						if($count <= $cookie_total) {
+						$cookie = $_COOKIE['brewer_number_' . ($i + 1)];
+
+						if( $cookie != ""){
 
 				?>
-					<li class="option-<?php echo $count; ?>"><?php echo $cookie; ?></li>
+					<li class="option-<?php echo $i; ?>"><?php echo $cookie; ?></li>
 				<?php
-
-						$count++;
 
 						}
 
-					}
+						$i++;
+
+
+					} while ($i < $cookie_total);
 
 				?>
 				</ul>
