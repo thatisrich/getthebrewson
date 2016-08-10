@@ -39,14 +39,13 @@ $(document).ready(function() {
 
 	});
 
+	$('#clearbrewers').click(function() {
 
+		clearBrewers();
+		//clear the display
+		$( ".brew-list" ).empty();
 
-	$('#clear-list').click(function() {
-		$.removeCookie('brewer_number');
-		$.removeCookie('brewer_total');
 	});
-
-
 
 	$('#reRoll').click(function() {
 
@@ -57,6 +56,29 @@ $(document).ready(function() {
 
 
 });
+
+function clearBrewers(){
+
+	var cookies = document.cookie.split(";");
+	for (var i = 0; i < cookies.length; i++)
+	  eraseCookie(cookies[i].split("=")[0]);
+
+}
+
+function eraseCookie(name) {
+    createCookie(name,"",-1);
+}
+
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
 
 
 function rollForBrewer() {

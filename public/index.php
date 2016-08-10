@@ -54,9 +54,6 @@
 
 				<?php
 
-					// Set count variable. We'll use this shortly.
-					$count = 1;
-
 					// Get all cookies
 					$cookies = $_COOKIE;
 
@@ -80,30 +77,34 @@
 					$id = $cookie_total;
 
 				?>
-				<ul class="brew-list" id="brewList">
+					<ul class="brew-list" id="brewList">
 				<?php
 
-					// Now that we have the numbers, lets start the loops.
-					$i = 0;
-					do {
+						if($cookie_total > 0){
 
-						$cookie = $_COOKIE['brewer_number_' . ($i + 1)];
+							// Now that we have the numbers, lets start the loops.
+							$i = 0;
+							do {
 
-						if( $cookie != ""){
+								$cookie = $_COOKIE['brewer_number_' . ($i + 1)];
+
+								if( $cookie != ""){
 
 				?>
-					<li class="option-<?php echo $i; ?>"><?php echo $cookie; ?></li>
+							<li class="option-<?php echo $i; ?>"><?php echo $cookie; ?></li>
 				<?php
+
+								}
+
+								$i++;
+
+
+							} while ($i < $cookie_total);
 
 						}
 
-						$i++;
-
-
-					} while ($i < $cookie_total);
-
 				?>
-				</ul>
+					</ul>
 				<?php
 
 					include 'modules/form-addname.php';
@@ -111,6 +112,7 @@
 				?>
 
 				<a class="btn" id="brews" href="#" title="Shuffle through the names and pick a brewer!">Pick a Brewer</a>
+				<a class="btn" id="clearbrewers" href="#" title="Start over, clear all brewers from the list">Remove all Brewers</a>
 				<?php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
 
 			</div>
