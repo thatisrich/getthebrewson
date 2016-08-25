@@ -7,18 +7,18 @@ $(document).ready(function() {
 
 
 	// Set ID based on current number of list items
-	var count = $(".brew-list li").length;
-	var id = count + 1;
-	var oButton = document.getElementById('addBrewer');
-	var data = document.getElementById('dataInput');
-	var display = document.getElementById('brewList');
+	var count 		= $(".brew-list li").length;
+	var id			= count + 1;
+	var oButton		= document.getElementById('addBrewer');
+	var data		= document.getElementById('dataInput');
+	var display		= document.getElementById('brewList');
 
 
 
 	oButton.onclick = function() {
 		$.cookie('brewer_number_' + id, data.value);
 		$.cookie('brewer_total', id);
-		display.innerHTML += '<li class="option-' + id + '">' + data.value + '</li>';
+		display.innerHTML += '<li class="option option-' + id + '"><span class="option--name">' + data.value + '</span> <span class="option--delete">Remove this name</span></li>';
 	};
 
 
@@ -57,18 +57,40 @@ $(document).ready(function() {
 
 });
 
+
+
+/*
+
+	Function which clears the list of names
+
+*/
 function clearBrewers(){
 
 	var cookies = document.cookie.split(";");
 	for (var i = 0; i < cookies.length; i++)
 	  eraseCookie(cookies[i].split("=")[0]);
+  	$.cookie('brewer_total', 0);
 
 }
 
+
+
+/*
+
+	Function which clears the cookies
+
+*/
 function eraseCookie(name) {
     createCookie(name,"",-1);
 }
 
+
+
+/*
+
+	Function which creates the name cookie
+
+*/
 function createCookie(name,value,days) {
     if (days) {
         var date = new Date();
@@ -81,6 +103,11 @@ function createCookie(name,value,days) {
 
 
 
+/*
+
+	Function which organises the selection animation
+
+*/
 function rollForBrewer() {
 
 	if(jQuery('.kettle--outer').hasClass('hidden')) {
@@ -104,7 +131,7 @@ function rollForBrewer() {
 
 		//jQuery('.kettle').removeClass('boiling');
 		jQuery('.kettle').removeClass('boiled');
-		jQuery('.kettle--name').removeClass('show');
+		jQuery('.kettle--name--wrap').removeClass('show');
 
 		getBrewer();
 
@@ -112,6 +139,13 @@ function rollForBrewer() {
 
 }
 
+
+
+/*
+
+	Function which get the selected name
+
+*/
 function getBrewer() {
 
 	jQuery('.brew-list').addClass('brew-list__active');
@@ -121,7 +155,7 @@ function getBrewer() {
 	var elemlength			= brewlist.length;
 	var randomnum			= Math.floor(Math.random()*elemlength);
 	var randomitem			= brewlist[randomnum];
-	var brewerName			= jQuery(randomitem).text();
+	var brewerName			= jQuery(randomitem).find('.option--name').text();
 
 	jQuery(randomitem).addClass('itsme');
 
@@ -138,7 +172,7 @@ function getBrewer() {
 	}, 4000);
 
 	setTimeout(function() {
-		jQuery('.kettle--name').addClass('show');
+		jQuery('.kettle--name--wrap').addClass('show');
 	}, 6000);
 
 }
