@@ -29,7 +29,6 @@
 	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-N2M8QZ');</script>
 	<!-- End Google Tag Manager -->
-
 	<?php } ?>
 
 </head>
@@ -91,7 +90,7 @@
 								if( $cookie != ""){
 
 				?>
-							<li class="option-<?php echo $i; ?>"><?php echo $cookie; ?></li>
+							<li class="option option-<?php echo $i; ?>"><span class="option--name"><?php echo $cookie; ?></span> <span class="option--delete">Remove this name</span></li>
 				<?php
 
 								}
@@ -123,7 +122,9 @@
 					<span class="kettle--body"></span>
 					<span class="kettle--stove"></span>
 					<span class="kettle--flames"></span>
-					<p class="kettle--name"></p>
+					<div class="kettle--name--wrap">
+						<p class="kettle--name"></p>
+					</div>
 				</div>
 			</div>
 
@@ -142,7 +143,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="library/js/libs/jquery.cookies.js"></script>
-	<script src="library/js/scripts.js"></script>
+	<script src="library/js/min/all.min.js"></script>
 
 </body>
 </html>
