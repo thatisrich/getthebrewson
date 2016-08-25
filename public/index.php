@@ -111,7 +111,7 @@
 				?>
 
 				<a class="btn" id="brews" href="#" title="Shuffle through the names and pick a brewer!">Pick a Brewer</a>
-				<a class="btn" id="clearbrewers" href="#" title="Start over, clear all brewers from the list">Remove all Brewers</a>
+				<a class="btn btn--remove" id="clearbrewers" href="#" title="Start over, clear all brewers from the list">Remove all Brewers</a>
 				<?php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
 
 			</div>
