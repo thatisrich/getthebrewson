@@ -60,10 +60,10 @@
 					//var_dump($cookies);
 
 					// If there are any cookies...
-					if( isset($_COOKIE['brewer_total']) ) {
+					if( isset($_COOKIE['brewer_existing']) ) {
 
 						// ...get the total number of names
-						$cookie_total = $_COOKIE['brewer_total'];
+						$cookie_total = $_COOKIE['brewer_existing'];
 
 					} else {
 
@@ -82,23 +82,28 @@
 						if($cookie_total > 0){
 
 							// Now that we have the numbers, lets start the loops.
-							$i = 0;
+							$i = 1;
+
 							do {
 
-								$cookie = $_COOKIE['brewer_number_' . ($i + 1)];
+								if(isset($_COOKIE['brewer_number_' . ($i)])) {
 
-								if( $cookie != ""){
+									$cookie = $_COOKIE['brewer_number_' . ($i)];
+
+									if( $cookie != ""){
 
 				?>
-							<li class="option option-<?php echo $i; ?>"><span class="option--name"><?php echo $cookie; ?></span> <span class="option--delete">Remove this name</span></li>
+							<li class="option option-<?php echo $i; ?>" data-name="brewer_number_<?php echo $i; ?>"><span class="option--name"><?php echo $cookie; ?></span> <span class="option--delete">Remove this name</span></li>
 				<?php
+
+									}
 
 								}
 
 								$i++;
 
 
-							} while ($i < $cookie_total);
+							} while ($i <= $cookie_total);
 
 						}
 

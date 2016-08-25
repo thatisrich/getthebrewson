@@ -1,3 +1,8 @@
+var countCookies 		= 0;
+var totalNames 			= 0;
+var id					= 0;
+var cookies 			= '';
+
 $(document).ready(function() {
 
 	$(".add-name").submit(function(e) {
@@ -7,8 +12,14 @@ $(document).ready(function() {
 
 
 	// Set ID based on current number of list items
-	var count 		= $(".brew-list li").length;
-	var id			= count + 1;
+	countCookies	= $.cookie('brewer_existing');
+
+	if(countCookies == 'NaN') {
+		countCookies	= 0;
+	}
+
+	totalNames 		= $(".brew-list li").length;
+	id				= countCookies++;
 	var oButton		= document.getElementById('addBrewer');
 	var data		= document.getElementById('dataInput');
 	var display		= document.getElementById('brewList');
@@ -17,18 +28,30 @@ $(document).ready(function() {
 
 	oButton.onclick = function() {
 		$.cookie('brewer_number_' + id, data.value);
-		$.cookie('brewer_total', id);
-		display.innerHTML += '<li class="option option-' + id + '"><span class="option--name">' + data.value + '</span> <span class="option--delete">Remove this name</span></li>';
+		$.cookie('brewer_total', totalNames);
+		$.cookie('brewer_existing', countCookies);
+		display.innerHTML += '<li class="option option-' + id + '" data-name="brewer_number_' + id + '"><span class="option--name">' + data.value + '</span> <span class="option--delete">Remove this name</span></li>';
 	};
 
 
 
 	$('#addBrewer').click(function() {
+
 		id++;
 		if($('.brew-list li').length > 1 ) {
 			$('#brews').addClass('brewme');
 		}
 		$('#dataInput').val('');
+
+		totalNames++;
+		countCookies++;
+
+		$.cookie('brewer_total', totalNames);
+		$.cookie('brewer_existing', countCookies);
+
+		console.log('Total Name = ' + totalNames);
+		console.log('Count cookies = ' + countCookies);
+
 	});
 
 
@@ -55,6 +78,25 @@ $(document).ready(function() {
 
 
 
+	$('body').on('click', '.option--delete', function () {
+
+		$(this).closest('.option').slideUp('fast');
+		var readyToDelete = $(this).closest('.option');
+		setTimeout(function() {
+			$(readyToDelete).remove();
+		}, 1200);
+
+		var cookieToMuch = $(this).closest('.option').data('name');
+
+		eraseCookie( cookieToMuch );
+
+		totalNames--;
+		$.cookie('brewer_total', totalNames);
+
+	});
+
+
+
 });
 
 
@@ -66,10 +108,11 @@ $(document).ready(function() {
 */
 function clearBrewers(){
 
-	var cookies = document.cookie.split(";");
+	cookies = document.cookie.split(";");
 	for (var i = 0; i < cookies.length; i++)
 	  eraseCookie(cookies[i].split("=")[0]);
   	$.cookie('brewer_total', 0);
+	id	= 1;
 
 }
 
