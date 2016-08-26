@@ -29,7 +29,6 @@
 	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-N2M8QZ');</script>
 	<!-- End Google Tag Manager -->
-
 	<?php } ?>
 
 </head>
@@ -61,10 +60,10 @@
 					//var_dump($cookies);
 
 					// If there are any cookies...
-					if( isset($_COOKIE['brewer_total']) ) {
+					if( isset($_COOKIE['brewer_existing']) ) {
 
 						// ...get the total number of names
-						$cookie_total = $_COOKIE['brewer_total'];
+						$cookie_total = $_COOKIE['brewer_existing'];
 
 					} else {
 
@@ -83,23 +82,28 @@
 						if($cookie_total > 0){
 
 							// Now that we have the numbers, lets start the loops.
-							$i = 0;
+							$i = 1;
+
 							do {
 
-								$cookie = $_COOKIE['brewer_number_' . ($i + 1)];
+								if(isset($_COOKIE['brewer_number_' . ($i)])) {
 
-								if( $cookie != ""){
+									$cookie = $_COOKIE['brewer_number_' . ($i)];
+
+									if( $cookie != ""){
 
 				?>
-							<li class="option-<?php echo $i; ?>"><?php echo $cookie; ?></li>
+							<li class="option option-<?php echo $i; ?>" data-name="brewer_number_<?php echo $i; ?>"><span class="option--name"><?php echo $cookie; ?></span> <span class="option--delete">Remove this name</span></li>
 				<?php
+
+									}
 
 								}
 
 								$i++;
 
 
-							} while ($i < $cookie_total);
+							} while ($i <= $cookie_total);
 
 						}
 
@@ -112,7 +116,7 @@
 				?>
 
 				<a class="btn" id="brews" href="#" title="Shuffle through the names and pick a brewer!">Pick a Brewer</a>
-				<a class="btn" id="clearbrewers" href="#" title="Start over, clear all brewers from the list">Remove all Brewers</a>
+				<a class="btn btn--remove" id="clearbrewers" href="#" title="Start over, clear all brewers from the list">Remove all Brewers</a>
 				<?php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
 
 			</div>
@@ -123,7 +127,9 @@
 					<span class="kettle--body"></span>
 					<span class="kettle--stove"></span>
 					<span class="kettle--flames"></span>
-					<p class="kettle--name"></p>
+					<div class="kettle--name--wrap">
+						<p class="kettle--name"></p>
+					</div>
 				</div>
 			</div>
 
@@ -142,7 +148,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="library/js/libs/jquery.cookies.js"></script>
-	<script src="library/js/scripts.js"></script>
+	<script src="library/js/min/all.min.js"></script>
 
 </body>
 </html>

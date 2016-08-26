@@ -9,17 +9,50 @@
 }
 
 .brew-list {
+	font-size: 1.2em;
 	list-style: none;
 	margin: 2em 0;
 	padding: 0;
-	text-align: center;
+	text-align: left;
+
 	li {
 		//display: inline-block;
-		padding: 0 .5em;
+
 		&::after {
 			//content: ', ';
 		}
+
 	}
+
+}
+
+.option {
+	padding: .5em 0;
+	position: relative;
+}
+
+.option--delete {
+	background-color: darken($white, 10%);
+	background-image: url('../images/icon-close.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 60%;
+	border-radius: 100%;
+	cursor: pointer;
+	display: block;
+	height: 20px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	text-indent: -100%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+
+	&:hover {
+		background-color: darken($alert-red, 30%);
+	}
+
 }
 
 /*
