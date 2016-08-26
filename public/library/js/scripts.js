@@ -111,8 +111,11 @@ function clearBrewers(){
 	cookies = document.cookie.split(";");
 	for (var i = 0; i < cookies.length; i++)
 	  eraseCookie(cookies[i].split("=")[0]);
-  	$.cookie('brewer_total', 0);
 	id	= 1;
+	totalNames = 0;
+	countCookies = 0;
+	$.cookie('brewer_total', totalNames);
+	$.cookie('brewer_existing', countCookies);
 
 }
 
