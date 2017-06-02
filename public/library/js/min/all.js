@@ -3,7 +3,11 @@ var totalNames 			= 0;
 var id					= 0;
 var cookies 			= '';
 
+
+
 $(document).ready(function() {
+
+
 
 	$(".add-name").submit(function(e) {
 	    e.preventDefault();
@@ -94,6 +98,19 @@ $(document).ready(function() {
 		$.cookie('brewer_total', totalNames);
 
 	});
+
+
+
+	/*
+
+		This will eventually fire after a defined timer has ran down on a name roll
+
+	*/
+	setTimeout(function() {
+
+		// notifyMe();
+
+	}, 2000);
 
 
 
@@ -220,5 +237,44 @@ function getBrewer() {
 	setTimeout(function() {
 		jQuery('.kettle--name--wrap').addClass('show');
 	}, 6000);
+
+}
+
+
+
+/*
+
+	Function for timer notifications
+
+	Base code taken from:
+
+		https://stackoverflow.com/questions/2271156/chrome-desktop-notification-example
+		https://jsbin.com/ziwod/2/edit?html,js,output
+
+*/
+document.addEventListener('DOMContentLoaded', function () {
+
+	if (Notification.permission !== "granted")
+	Notification.requestPermission();
+
+});
+
+function notifyMe() {
+
+
+	if (Notification.permission !== "granted")
+
+		Notification.requestPermission();
+
+	else {
+
+		var notification = new Notification('Time\'s up dude!', {
+			icon: 'http://www.getthebrewson.co.uk/library/images/img-notification-tile.png',
+			body: 'It\'s someone elses turn to make the brews. Click to give it another spin!',
+		});
+
+		window.open("http://www.getthebrewson.co.uk/");
+
+	}
 
 }
