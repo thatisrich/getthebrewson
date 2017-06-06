@@ -233,6 +233,9 @@ function getBrewer() {
 
 	setTimeout(function() {
 		jQuery('.kettle').addClass('boiling');
+		if(notificationBrewTimer != 0) {
+			jQuery('.countdown').addClass('visible');
+		}
 	}, 2000);
 
 	setTimeout(function() {
@@ -254,68 +257,37 @@ function getBrewer() {
 */
 function initCountdownTimer() {
 
-		notificationBrewTimer 				= jQuery('#countdownVal').val();
+	notificationBrewTimer 				= jQuery('#countdownVal').val();
 
-		if(notificationBrewTimer != 0) {
+	if(notificationBrewTimer != 0) {
 
-			jQuery('.countdown').addClass('visible');
+		notificationTimer	= notificationBrewTimer + ':00';
 
-			notificationTimer	= notificationBrewTimer + ':00';
+		var interval 					= setInterval(function() {
 
-			var interval 					= setInterval(function() {
+			// console.log(notificationTimer);
 
-				console.log(notificationTimer);
+			var timer 					= notificationTimer.split(':');
+			var minutes 				= parseInt(timer[0], 10);
+			var seconds 				= parseInt(timer[1], 10);
+			--seconds;
+			minutes 					= (seconds < 0) ? --minutes : minutes;
 
-				var timer 					= notificationTimer.split(':');
-				var minutes 				= parseInt(timer[0], 10);
-				var seconds 				= parseInt(timer[1], 10);
-				--seconds;
-				minutes 					= (seconds < 0) ? --minutes : minutes;
+			seconds 					= (seconds < 0) ? 59 : seconds;
+			seconds 					= (seconds < 10) ? '0' + seconds : seconds;
 
-				seconds 					= (seconds < 0) ? 59 : seconds;
-				seconds 					= (seconds < 10) ? '0' + seconds : seconds;
+			jQuery('.countdown--timer span').html(minutes + ':' + seconds);
+			notificationTimer			= minutes + ':' + seconds;
 
-				jQuery('.countdown--timer').html(minutes + ':' + seconds);
-				notificationTimer			= minutes + ':' + seconds;
+			if(minutes < 0) {
 
-				if(minutes < 0) {
+				notificationPopup();
 
-					console.log('Running the notification function');
+				clearInterval(interval);
 
-					notificationPopup();
+			}
 
-					clearInterval(interval);
-
-				}
-
-			}, 1000);
-
-			/*
-
-				notificationBrewTimer				= notificationBrewTimer * 60000;
-
-				console.log('Countdown is set to: ' + notificationBrewTimer);
-
-				setTimeout(function() {
-
-					console.log('Running the notification function');
-
-					var notification = new Notification('Time\'s up dude!', {
-						icon: 'http://www.getthebrewson.co.uk/library/images/img-notification-tile.png',
-						body: 'It\'s someone elses turn to make the brews. Click to give it another spin!',
-					});
-
-					window.open("http://www.getthebrewson.co.uk/");
-
-				}, notificationBrewTimer);
-
-			*/
-
-		} else {
-
-			console.log('Countdown is not set');
-
-		}
+		}, 1000);
 
 	}
 

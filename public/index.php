@@ -49,7 +49,7 @@
 
 				<div class="countdown">
 					<p class="countdown--text">Next Brewer in:</p>
-					<p class="countdown--timer"></p>
+					<p class="countdown--timer"><span>0</span></p>
 				</div>
 
 				<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
@@ -119,9 +119,10 @@
 
 				?>
 
-				<form class="">
+				<form class="form--countdown">
 					<p>Add a countdown timer for the next brew!</p>
-					<input class="" id="countdownVal" min="0" max="300" type="number" value="30" /> <label class="" for="countdownVal">minutes</label>
+					<input class="" id="countdownVal" min="0" max="300" type="number" value="0" /> <label class="" for="countdownVal">minutes.</label>
+					<p><small><i>Remember: to get a browser notification make sure they are allowed and that you don't close this tab!</i></small></p>
 				</form>
 
 				<a class="btn" id="brews" href="#" title="Shuffle through the names and pick a brewer!">Pick a Brewer</a>
