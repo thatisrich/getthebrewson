@@ -47,9 +47,13 @@
 
 			<div class="brew--action">
 
-				<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
-				<?php /* <p>Not after a cuppa? Why not pick an artist to listen instead!</p> */ ?>
+				<div class="countdown">
+					<p class="countdown--text">Next Brewer in:</p>
+					<p class="countdown--timer"></p>
+				</div>
 
+				<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
+				<p>Not after a cuppa? Why not decide who is in control of the music instead!</p>
 
 				<?php
 
@@ -76,48 +80,52 @@
 					$id = $cookie_total;
 
 				?>
-					<ul class="brew-list" id="brewList">
+				<ul class="brew-list" id="brewList">
 				<?php
 
-						if($cookie_total > 0){
+					if($cookie_total > 0){
 
-							// Now that we have the numbers, lets start the loops.
-							$i = 1;
+						// Now that we have the numbers, lets start the loops.
+						$i = 1;
 
-							do {
+						do {
 
-								if(isset($_COOKIE['brewer_number_' . ($i)])) {
+							if(isset($_COOKIE['brewer_number_' . ($i)])) {
 
-									$cookie = $_COOKIE['brewer_number_' . ($i)];
+								$cookie = $_COOKIE['brewer_number_' . ($i)];
 
-									if( $cookie != ""){
+								if( $cookie != ""){
 
 				?>
-							<li class="option option-<?php echo $i; ?>" data-name="brewer_number_<?php echo $i; ?>"><span class="option--name"><?php echo $cookie; ?></span> <span class="option--delete">Remove this name</span></li>
+					<li class="option option-<?php echo $i; ?>" data-name="brewer_number_<?php echo $i; ?>"><span class="option--name"><?php echo $cookie; ?></span> <span class="option--delete">Remove this name</span></li>
 				<?php
-
-									}
 
 								}
 
-								$i++;
+							}
+
+							$i++;
 
 
-							} while ($i <= $cookie_total);
+						} while ($i <= $cookie_total);
 
-						}
+					}
 
 				?>
-					</ul>
+				</ul>
 				<?php
 
 					include 'modules/form-addname.php';
 
 				?>
 
+				<form class="">
+					<p>Add a countdown timer for the next brew!</p>
+					<input class="" id="countdownVal" min="0" max="300" type="number" value="30" /> <label class="" for="countdownVal">minutes</label>
+				</form>
+
 				<a class="btn" id="brews" href="#" title="Shuffle through the names and pick a brewer!">Pick a Brewer</a>
 				<a class="btn btn--remove" id="clearbrewers" href="#" title="Start over, clear all brewers from the list">Remove all Brewers</a>
-				<?php /* <a class="btn" id="clear-list" href="#" title="#">Clear my list, start again!</a> */ ?>
 
 			</div>
 

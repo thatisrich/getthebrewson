@@ -1,7 +1,9 @@
-var countCookies 		= 0;
-var totalNames 			= 0;
-var id					= 0;
-var cookies 			= '';
+var countCookies 				= 0;
+var totalNames 					= 0;
+var id							= 0;
+var cookies 					= '';
+var notificationBrewTimer		= 0;
+var notificationTimer			= 0;
 
 
 
@@ -62,6 +64,8 @@ $(document).ready(function() {
 
 	$('#brews').click(function() {
 
+		initCountdownTimer();
+
 		rollForBrewer();
 
 	});
@@ -69,7 +73,8 @@ $(document).ready(function() {
 	$('#clearbrewers').click(function() {
 
 		clearBrewers();
-		//clear the display
+
+		// Clear the display
 		$( ".brew-list" ).empty();
 
 	});
@@ -101,16 +106,12 @@ $(document).ready(function() {
 
 
 
-	/*
+	document.addEventListener('DOMContentLoaded', function () {
 
-		This will eventually fire after a defined timer has ran down on a name roll
+		if (Notification.permission !== "granted")
+		Notification.requestPermission();
 
-	*/
-	setTimeout(function() {
-
-		// notifyMe();
-
-	}, 2000);
+	});
 
 
 
@@ -144,7 +145,9 @@ function clearBrewers(){
 
 */
 function eraseCookie(name) {
+
     createCookie(name,"",-1);
+
 }
 
 
@@ -155,6 +158,7 @@ function eraseCookie(name) {
 
 */
 function createCookie(name,value,days) {
+
     if (days) {
         var date = new Date();
         date.setTime(date.getTime()+(days*24*60*60*1000));
@@ -162,6 +166,7 @@ function createCookie(name,value,days) {
     }
     else var expires = "";
     document.cookie = name+"="+value+expires+"; path=/";
+
 }
 
 
@@ -246,27 +251,93 @@ function getBrewer() {
 
 	Function for timer notifications
 
+*/
+function initCountdownTimer() {
+
+		notificationBrewTimer 				= jQuery('#countdownVal').val();
+
+		if(notificationBrewTimer != 0) {
+
+			jQuery('.countdown').addClass('visible');
+
+			notificationTimer	= notificationBrewTimer + ':00';
+
+			var interval 					= setInterval(function() {
+
+				console.log(notificationTimer);
+
+				var timer 					= notificationTimer.split(':');
+				var minutes 				= parseInt(timer[0], 10);
+				var seconds 				= parseInt(timer[1], 10);
+				--seconds;
+				minutes 					= (seconds < 0) ? --minutes : minutes;
+
+				seconds 					= (seconds < 0) ? 59 : seconds;
+				seconds 					= (seconds < 10) ? '0' + seconds : seconds;
+
+				jQuery('.countdown--timer').html(minutes + ':' + seconds);
+				notificationTimer			= minutes + ':' + seconds;
+
+				if(minutes < 0) {
+
+					console.log('Running the notification function');
+
+					notificationPopup();
+
+					clearInterval(interval);
+
+				}
+
+			}, 1000);
+
+			/*
+
+				notificationBrewTimer				= notificationBrewTimer * 60000;
+
+				console.log('Countdown is set to: ' + notificationBrewTimer);
+
+				setTimeout(function() {
+
+					console.log('Running the notification function');
+
+					var notification = new Notification('Time\'s up dude!', {
+						icon: 'http://www.getthebrewson.co.uk/library/images/img-notification-tile.png',
+						body: 'It\'s someone elses turn to make the brews. Click to give it another spin!',
+					});
+
+					window.open("http://www.getthebrewson.co.uk/");
+
+				}, notificationBrewTimer);
+
+			*/
+
+		} else {
+
+			console.log('Countdown is not set');
+
+		}
+
+	}
+
+}
+
+/*
+
+	Function to init the browser notification
+
 	Base code taken from:
 
 		https://stackoverflow.com/questions/2271156/chrome-desktop-notification-example
 		https://jsbin.com/ziwod/2/edit?html,js,output
 
 */
-document.addEventListener('DOMContentLoaded', function () {
+function notificationPopup() {
 
-	if (Notification.permission !== "granted")
-	Notification.requestPermission();
-
-});
-
-function notifyMe() {
-
-
-	if (Notification.permission !== "granted")
+	if (Notification.permission !== "granted") {
 
 		Notification.requestPermission();
 
-	else {
+	} else {
 
 		var notification = new Notification('Time\'s up dude!', {
 			icon: 'http://www.getthebrewson.co.uk/library/images/img-notification-tile.png',
@@ -276,5 +347,7 @@ function notifyMe() {
 		window.open("http://www.getthebrewson.co.uk/");
 
 	}
+
+	jQuery('.countdown').removeClass('visible');
 
 }
