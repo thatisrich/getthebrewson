@@ -52,7 +52,7 @@
 					<p class="countdown--timer"><span>0</span></p>
 				</div>
 
-				<p>Can't decide who's turn it is to make a brew? Add the contenders and let us pick for you!</p>
+				<p>Can't decide whose turn it is to make a brew? Add the contenders and let us pick for you!</p>
 				<p>Not after a cuppa? Why not decide who is in control of the music instead!</p>
 
 				<?php
