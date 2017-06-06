@@ -23,3 +23,38 @@ body {
 	font-family: $body;
 	position: relative;
 }
+
+
+
+/* =Brew Countdown
+==========================================*/
+.countdown {
+	opacity: 0;
+	text-align: center;
+	@include transition(all $transition-time ease-in-out);
+
+	&.visible {
+		opacity: 1;
+	}
+
+}
+
+.countdown--text {
+	color: $brand-primary;
+	font-family: $fancy-sans;
+	font-size: 2em;
+	margin: 0;
+}
+
+.countdown--timer {
+	font-family: $fancy-sans;
+	font-size: 4em;
+	line-height: 1;
+	margin: 0;
+	@include transition(all $transition-time ease-in-out);
+
+	.visible & {
+		margin: .2em 0 1em;
+	}
+
+}

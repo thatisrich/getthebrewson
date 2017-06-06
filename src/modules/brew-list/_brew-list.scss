@@ -1,5 +1,6 @@
 .brew--action {
 	display: block;
+	padding-bottom: 3em;
 	@include transition(all $transition-time ease-in-out);
 
 	&.push {
