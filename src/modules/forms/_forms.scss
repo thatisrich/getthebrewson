@@ -11,7 +11,8 @@ input {
 
 	&[type="text"],
 	&[type="password"],
-	&[type="email"] {
+	&[type="email"],
+	&[type="number"] {
 		background-color: $white;
 		border-color: $brand-primary;
 		border-style: solid;
@@ -27,6 +28,28 @@ input {
 		display: block;
 		margin: 0;
 		width: 35%;
+	}
+
+}
+
+
+.form--countdown {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
+	input {
+
+		&[type="number"] {
+			border-color: transparent transparent $brand-primary;
+			border-radius: 0;
+			margin: 0 .5em;
+			padding: .4em 0;
+			text-align: center;
+			width: 60px;
+		}
+
 	}
 
 }
