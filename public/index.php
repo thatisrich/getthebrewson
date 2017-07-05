@@ -10,6 +10,8 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
+	<script src="library/js/libs/modernizr.js"></script>
+
 	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="library/css/style.css">
 
