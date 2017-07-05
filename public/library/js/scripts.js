@@ -1,3 +1,32 @@
+/**
+ * @author Alexander Manzyuk <admsev@gmail.com>
+ * Copyright (c) 2012 Alexander Manzyuk - released under MIT License
+ * https://github.com/admsev/jquery-play-sound
+ * Usage: $.playSound('http://example.org/sound')
+ * $.playSound('http://example.org/sound.wav')
+ * $.playSound('/attachments/sounds/1234.wav')
+ * $.playSound('/attachments/sounds/1234.mp3')
+ * $.stopSound();
+**/
+
+(function ($) {
+    $.extend({
+        playSound: function () {
+            return $(
+                   '<audio class="sound-player" autoplay="autoplay" style="display:none;">'
+                     + '<source src="' + arguments[0] + '" />'
+                     + '<embed src="' + arguments[0] + '" hidden="true" autostart="true" loop="false"/>'
+                   + '</audio>'
+                 ).appendTo('body');
+        },
+        stopSound: function () {
+            $(".sound-player").remove();
+        }
+    });
+})(jQuery);
+
+
+
 var countCookies 				= 0;
 var totalNames 					= 0;
 var id							= 0;
@@ -55,16 +84,14 @@ $(document).ready(function() {
 		$.cookie('brewer_total', totalNames);
 		$.cookie('brewer_existing', countCookies);
 
-		console.log('Total Name = ' + totalNames);
-		console.log('Count cookies = ' + countCookies);
+		// console.log('Total Name = ' + totalNames);
+		// console.log('Count cookies = ' + countCookies);
 
 	});
 
 
 
 	$('#brews').click(function() {
-
-		initCountdownTimer();
 
 		rollForBrewer();
 
@@ -178,6 +205,8 @@ function createCookie(name,value,days) {
 */
 function rollForBrewer() {
 
+	// $.playSound('http://getthebrewson.mb/library/audio/kettle-boil.mp3');
+
 	if(jQuery('.kettle--outer').hasClass('hidden')) {
 
 		jQuery('.brew--action').addClass('push');
@@ -224,6 +253,7 @@ function getBrewer() {
 	var randomnum			= Math.floor(Math.random()*elemlength);
 	var randomitem			= brewlist[randomnum];
 	var brewerName			= jQuery(randomitem).find('.option--name').text();
+	var currentUrl			= jQuery(location).attr('href');
 
 	jQuery(randomitem).addClass('itsme');
 
@@ -233,17 +263,18 @@ function getBrewer() {
 
 	setTimeout(function() {
 		jQuery('.kettle').addClass('boiling');
-		if(notificationBrewTimer != 0) {
-			jQuery('.countdown').addClass('visible');
-		}
 	}, 2000);
 
 	setTimeout(function() {
 		jQuery('.kettle').addClass('boiled');
+		initCountdownTimer();
 	}, 4000);
 
 	setTimeout(function() {
 		jQuery('.kettle--name--wrap').addClass('show');
+		if(notificationBrewTimer != 0) {
+			jQuery('.countdown').addClass('visible');
+		}
 	}, 6000);
 
 }
@@ -260,6 +291,8 @@ function initCountdownTimer() {
 	notificationBrewTimer 				= jQuery('#countdownVal').val();
 
 	if(notificationBrewTimer != 0) {
+
+		// console.log('Starting timer now');
 
 		notificationTimer	= notificationBrewTimer + ':00';
 
