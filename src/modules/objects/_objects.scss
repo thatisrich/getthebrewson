@@ -37,6 +37,11 @@
 	background-position: 0 0;
 	display: block;
 	position: absolute;
+
+	.svg & {
+		background-image: url('../images/svgs/sprite-kettle.svg');
+	}
+
 }
 
 .kettle--name--wrap {

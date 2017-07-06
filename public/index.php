@@ -10,6 +10,16 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
+	<link rel="apple-touch-icon" href="library/images/apple-icon-touch.png">
+	<link rel="icon" href="favicon.png">
+	<!--[if IE]>
+		<link rel="shortcut icon" href="favicon.ico">
+	<![endif]-->
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="library/images/win8-tile-icon.png">
+
+	<script src="library/js/libs/modernizr.js"></script>
+
 	<link href='http://fonts.googleapis.com/css?family=Amaranth:400,700italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="library/css/style.css">
 
