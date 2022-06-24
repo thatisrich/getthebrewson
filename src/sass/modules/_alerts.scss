@@ -1,0 +1,73 @@
+// alerts and notices
+%alert {
+	border: 1px solid;
+	margin: .7em 0;
+	padding: .7em;
+	text-align: center;
+
+	>p {
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+}
+
+.alert-help {
+	@extend %alert;
+	background: $alert-yellow;
+	border-color: darken($alert-yellow, 5%);
+}
+
+.alert-info {
+	@extend %alert;
+	background: $alert-blue;
+	border-color: darken($alert-blue, 5%);
+}
+
+.alert-error {
+	@extend %alert;
+	background-color: $alert-red;
+	border-color: darken($alert-red, 5%);
+	color: darken($alert-red, 30%);
+}
+
+.alert-success {
+	@extend %alert;
+	background: $alert-green;
+	border-color: darken($alert-green, 5%);
+}
+
+.go-live_message {
+	display: block;
+	padding: 2em 10%;
+	text-align: center;
+
+	p {
+		font-family: Helvetica, Arial, sans-serif;
+		font-weight: 600;
+		margin: 0;
+		text-transform: uppercase;
+	}
+}
+
+.go-live_error {
+	background-color: $alert-red;
+
+	p {
+		color: darken($alert-red, 10%);
+	}
+}
+
+.go-live_notice {
+	background-color: $alert-blue;
+
+	p {
+		color: darken($alert-blue, 20%);
+	}
+}

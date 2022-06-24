@@ -1,0 +1,35 @@
+/* =Buttons
+========================================= */
+.btn {
+	background-color: $brand-primary;
+	border-color: $brand-primary darken($brand-primary, 8%) darken($brand-primary, 15%);
+	border-style: solid;
+	border-radius: $border;
+	border-width: 1px;
+	color: $white;
+	display: block;
+	font-family: $fancy-sans;
+	margin: .5em 0;
+	padding: .4em 1em;
+	text-align: center;
+
+	&:hover,
+	&:focus {
+		background-color: darken($brand-primary, 10%);
+	}
+
+	&--remove {
+		background-color: darken($white, 10%);
+		border-color: darken($white, 10%) darken($white, 15%) darken($white, 30%);
+		color: darken($white, 30%);
+
+		&:hover,
+		&:focus {
+			background-color: darken($alert-red, 30%);
+			border-color: darken($alert-red, 20%) darken($alert-red, 30%) darken($alert-red, 40%);
+			color: $white;
+		}
+
+	}
+
+}

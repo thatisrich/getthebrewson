@@ -1,16 +1,3 @@
-# Ignore gulp
-node_modules
-
-# Ignore codekit
-*.scssc
-*.codekit
-
-# Track these files.
-!.gitignore
-!package.json
-!gulpfile.js
-!public/.htaccess
-
-# Injected ignores here
-/.vagrant/
-/log/
+node_modules/
+.cache/
+public
