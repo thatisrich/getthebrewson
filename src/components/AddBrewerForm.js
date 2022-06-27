@@ -6,17 +6,16 @@ import FormError from "./FormError";
 
 function AddBrewerForm(props) {
 	const brewerNameRef = useRef();
-	const [formIsValid, setFormValid] = useState(true);
 
 	function addBrewer(event) {
 		event.preventDefault();
 		const enteredName = brewerNameRef.current.value;
 		if (enteredName !== "") {
-			setFormValid(true);
+			props.onFormValidation(true);
 			event.target.reset();
 			props.onAddBrewer(enteredName);
 		} else {
-			setFormValid(false);
+			props.onFormValidation(false);
 		}
 	}
 
@@ -33,7 +32,7 @@ function AddBrewerForm(props) {
 					Add to the mix
 				</button>
 			</form>
-			<FormError isValid={formIsValid} />
+			<FormError isValid={props.formIsValid} />
 		</div>
 	);
 }
