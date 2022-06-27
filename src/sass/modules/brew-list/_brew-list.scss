@@ -1,7 +1,7 @@
 .brew--action {
 	display: block;
 	padding-bottom: 3em;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 
 	&.push {
 		padding-top: 340px;
@@ -46,6 +46,7 @@
 	background-repeat: no-repeat;
 	background-size: 60%;
 	border-radius: 100%;
+	border-width: 0;
 	cursor: pointer;
 	display: block;
 	height: 20px;

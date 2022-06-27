@@ -6,7 +6,7 @@
 	position: absolute;
 	top: 0;
 	width: 100%;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 
 	&.hidden {
 		opacity: 0;
@@ -23,7 +23,7 @@
 	opacity: 1;
 	width: 420px;
 	z-index: 1;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 }
 
 .kettle--body,
@@ -57,7 +57,7 @@
 	top: 142px;
 	width: 198px;
 	z-index: 4;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 
 	&.show {
 		opacity: 1;
@@ -110,7 +110,8 @@
 	width: 290px;
 	z-index: 2;
 
-	&::before { // Kettle Glow
+	&::before {
+		// Kettle Glow
 		background-position: -88px -581px;
 		bottom: 0;
 		content: 'Glow';
@@ -129,7 +130,8 @@
 		}
 	}
 
-	&::after { // Steam
+	&::after {
+		// Steam
 		background-image: url('../images/img-steam-animation.gif');
 		background-repeat: no-repeat;
 		content: 'steam';

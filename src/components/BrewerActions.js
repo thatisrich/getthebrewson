@@ -2,7 +2,7 @@ import React from "react";
 
 function BrewerActions(props) {
 	return (
-		<div>
+		<div className="actions">
 			<button
 				className="btn"
 				id="brews"

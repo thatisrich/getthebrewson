@@ -1,10 +1,11 @@
 /* =Transitions
 ==========================================*/
 /*
-	USAGE: @include transition(all $transition-time ease-in-out);
+	USAGE: @include transition(all $transition ease-in-out);
 */
 @mixin transition($transition...) {
-	$prefixes:      ("-webkit-", "" );
+	$prefixes: ("-webkit-", "");
+
 	@each $prefix in $prefixes {
 		#{$prefix}transition: $transition;
 	}
@@ -29,6 +30,7 @@
 /* =Clearfix
 ==========================================*/
 @mixin cf {
+
 	&::before,
 	&::after {
 		content: "";

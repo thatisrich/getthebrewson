@@ -3,8 +3,11 @@ import React from "react";
 function SelectedBrewer(props) {
 	if (props.selectedBrewer) {
 		return (
-			<div>
-				<p className="brewer">{props.selectedBrewer.name}</p>
+			<div className="brewer--outer">
+				<p className="brewer">
+					Looks like it's you turn{" "}
+					<span>{props.selectedBrewer.name}</span>
+				</p>
 			</div>
 		);
 	}

@@ -1,8 +1,15 @@
 form {
+	align-items: stretch;
 	display: flex;
+	gap: 1.5rem;
 	margin: 2em 0;
 	justify-content: space-between;
 	width: 100%;
+
+	.btn {
+		margin: 0;
+	}
+
 }
 
 input {
@@ -19,6 +26,8 @@ input {
 		border-width: 1px;
 		border-radius: $border;
 		display: block;
+		flex-grow: 1;
+		flex-shrink: 1;
 		padding: .4em 1em;
 		width: 60%;
 	}

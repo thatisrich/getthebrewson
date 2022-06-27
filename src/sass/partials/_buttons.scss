@@ -13,6 +13,10 @@
 	padding: .4em 1em;
 	text-align: center;
 
+	transition: background-color $transition ease-in-out,
+		border-color $transition ease-in-out,
+		color $transition ease-in-out;
+
 	&:hover,
 	&:focus {
 		background-color: darken($brand-primary, 10%);

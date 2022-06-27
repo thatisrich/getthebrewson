@@ -9,6 +9,7 @@ html {
 	box-sizing: border-box;
 	height: 100%;
 }
+
 *,
 *:before,
 *:after {
@@ -23,12 +24,46 @@ body {
 
 
 
+/* =Selected Brewer
+==========================================*/
+.brewer--outer {
+	padding: 1rem 0;
+}
+
+.brewer {
+	display: block;
+	font-size: 1.5rem;
+	text-align: center;
+
+	span {
+		display: block;
+		font-size: clamp(2rem, 12vw, 6rem);
+	}
+
+}
+
+
+
+/* =Actions
+==========================================*/
+.actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+
+	.btn {
+		flex: 1;
+	}
+}
+
+
+
 /* =Brew Countdown
 ==========================================*/
 .countdown {
 	opacity: 0;
 	text-align: center;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 
 	&.visible {
 		opacity: 1;
@@ -48,7 +83,7 @@ body {
 	font-size: 4em;
 	line-height: 1;
 	margin: 0;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 
 	.visible & {
 		margin: .2em 0 1em;

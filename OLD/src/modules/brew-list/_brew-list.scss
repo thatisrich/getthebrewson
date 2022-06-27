@@ -1,7 +1,7 @@
 .brew--action {
 	display: block;
 	padding-bottom: 3em;
-	@include transition(all $transition-time ease-in-out);
+	@include transition(all $transition ease-in-out);
 
 	&.push {
 		padding-top: 340px;
