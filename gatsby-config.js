@@ -6,6 +6,13 @@ module.exports = {
 	plugins: [
 		"gatsby-plugin-sass",
 		"gatsby-plugin-react-helmet",
+		"gatsby-plugin-offline",
+		{
+			resolve: "gatsby-plugin-offline",
+			options: {
+				precachePages: ["/"],
+			},
+		},
 		{
 			resolve: "gatsby-plugin-google-tagmanager",
 			options: {

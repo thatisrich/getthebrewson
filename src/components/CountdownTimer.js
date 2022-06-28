@@ -7,6 +7,9 @@ const CountdownTimer = (props) => {
 
 	if (props.timerisVisible) {
 		if (days + hours + minutes + seconds <= 0) {
+			// TODO - Stop eternal notification loop
+			// props.onTimerExpire();
+
 			return <ExpiredNotice />;
 		} else {
 			return (

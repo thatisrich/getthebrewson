@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 import Layout from "../components/layout/Layout";
@@ -10,8 +11,6 @@ import SetCountdownForm from "../components/SetCountdownForm";
 import BrewerActions from "../components/BrewerActions";
 import SelectedBrewer from "../components/SelectedBrewer";
 import CountdownTimer from "../components/CountdownTimer";
-
-import { Helmet } from "react-helmet";
 
 function IndexPage() {
 	// Set brewer list values
@@ -88,6 +87,27 @@ function IndexPage() {
 		}
 	}
 
+	// Setting up browser notifications
+	const [notificationPermissions, setNotificationPermissions] = useState();
+
+	// TODO - Build out browser notification after timer has elapsed
+	function browserNotificationHandler() {
+		Notification.requestPermission().then(function (result) {
+			setNotificationPermissions(result);
+		});
+		if (notificationPermissions === "granted") {
+			console.log("now run notification");
+
+			// TODO - Fix image
+			const img = "/images/svgs/icon-notification.svg";
+			const text = "Thanks for the round! Time to start another round!";
+			const notification = new Notification("Get the Brews on!", {
+				body: text,
+				icon: img,
+			});
+		}
+	}
+
 	return (
 		<Layout>
 			<Helmet>
@@ -126,6 +146,7 @@ function IndexPage() {
 						<CountdownTimer
 							targetDate={countdownTimer}
 							timerisVisible={showTimer}
+							onTimerExpire={browserNotificationHandler}
 						/>
 					</div>
 
