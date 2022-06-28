@@ -24,12 +24,8 @@ const CountdownTimer = (props) => {
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
 	return (
 		<div className="show-counter">
-			<a
-				href="https://tapasadhikary.com"
-				target="_blank"
-				rel="noopener noreferrer"
-				className="countdown-link"
-			>
+			<p className="countdown-text">Next brewer up in:</p>
+			<div className="countdown-inner">
 				{/* <DateTimeDisplay
 					value={days}
 					type={"Days"}
@@ -53,7 +49,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 					type={"Seconds"}
 					isDanger={false}
 				/>
-			</a>
+			</div>
 		</div>
 	);
 };

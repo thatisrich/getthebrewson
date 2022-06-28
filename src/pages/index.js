@@ -9,8 +9,9 @@ import AddBrewerForm from "../components/AddBrewerForm";
 import SetCountdownForm from "../components/SetCountdownForm";
 import BrewerActions from "../components/BrewerActions";
 import SelectedBrewer from "../components/SelectedBrewer";
-
 import CountdownTimer from "../components/CountdownTimer";
+
+import { Helmet } from "react-helmet";
 
 function IndexPage() {
 	// Set brewer list values
@@ -40,28 +41,32 @@ function IndexPage() {
 		const newBrewers = brewerList.filter((_, index) => index !== key);
 
 		setBrewerList(newBrewers);
-		setFormValid("true");
+		setFormValid(true);
 	}
 
 	// Select an entry from the list
 	function selectBrewerHandler() {
-		const brewName =
-			brewerList[Math.floor(Math.random() * brewerList.length)];
+		if (brewerList.length) {
+			const brewName =
+				brewerList[Math.floor(Math.random() * brewerList.length)];
 
-		if (userTimer) {
-			setCountdownTimer(addMinutes(currentDateTime, userTimer));
+			if (userTimer) {
+				setCountdownTimer(addMinutes(currentDateTime, userTimer));
+			}
+
+			setSelectedBrewer(brewName);
+			setFormValid(true);
+			countdownTimerHandler();
+		} else {
+			setFormValid(false);
 		}
-
-		setSelectedBrewer(brewName);
-		setFormValid("true");
-		countdownTimerHandler();
 	}
 
 	// Remove / dump all entries in the list
 	function removeBrewersHandler() {
 		setSelectedBrewer();
 		setBrewerList([]);
-		setFormValid("true");
+		setFormValid(true);
 		setShowTimer(false);
 	}
 
@@ -85,6 +90,17 @@ function IndexPage() {
 
 	return (
 		<Layout>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>
+					Decide whose round it is next with Get the Brews on!
+				</title>
+				<meta
+					name="description"
+					content="If you can't decide whose turn it is to make the next brew round, let fate pick a name from your custom list!"
+				/>
+				<link rel="canonical" href="https://getthebrewson.co.uk/" />
+			</Helmet>
 			<section className="">
 				<OpeningContent />
 
@@ -94,7 +110,17 @@ function IndexPage() {
 							<p className="board--message">
 								<span>Who's round is it?</span>
 							</p>
-							<SelectedBrewer selectedBrewer={selectedBrewer} />
+							<div
+								className={
+									selectedBrewer
+										? "brewer--outer set"
+										: "brewer--outer"
+								}
+							>
+								<SelectedBrewer
+									selectedBrewer={selectedBrewer}
+								/>
+							</div>
 						</div>
 
 						<CountdownTimer

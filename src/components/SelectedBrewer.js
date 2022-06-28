@@ -3,20 +3,20 @@ import React from "react";
 function SelectedBrewer(props) {
 	if (props.selectedBrewer) {
 		return (
-			<div className="brewer--outer">
-				<p className="brewer">
+			<>
+				<p className="brewer brewer_name">
 					Looks like it's your turn{" "}
 					<span>{props.selectedBrewer.name}</span>
 				</p>
-			</div>
+			</>
 		);
 	} else {
 		return (
-			<div className="brewer--outer">
-				<p className="brewer">
+			<>
+				<p className="brewer brewer_empty">
 					<span>???</span>
 				</p>
-			</div>
+			</>
 		);
 	}
 }

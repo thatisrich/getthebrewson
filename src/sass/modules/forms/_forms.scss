@@ -10,6 +10,14 @@ form {
 		margin: 0;
 	}
 
+	&.add-name {
+
+		@media only screen and (max-width: 37.5em) {
+			flex-direction: column;
+		}
+
+	}
+
 }
 
 input {
@@ -30,6 +38,11 @@ input {
 		flex-shrink: 1;
 		padding: .4em 1em;
 		width: 60%;
+
+		@media only screen and (max-width: 37.5em) {
+			width: 100%;
+		}
+
 	}
 
 	&[type="submit"] {
