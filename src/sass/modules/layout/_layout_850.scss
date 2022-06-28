@@ -1,0 +1,21 @@
+.layout-grid {
+	gap: 3rem;
+	grid-template-columns: 50% 1fr;
+	max-width: $wrap-wide;
+	margin-top: 4rem;
+}
+
+.layout-item {
+
+	&:first-child {
+		grid-column-start: 2;
+		grid-column-end: 3;
+	}
+
+	&:last-child {
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 1;
+	}
+
+}

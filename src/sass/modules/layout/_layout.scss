@@ -1,0 +1,16 @@
+.layout-grid {
+	display: grid;
+	gap: 2rem;
+	margin: 0 auto;
+	width: 90%;
+}
+
+.layout-item {}
+
+
+
+@media only screen and (min-width: 53.125em) {
+
+	@import 'layout_850';
+
+}

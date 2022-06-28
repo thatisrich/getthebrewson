@@ -1,0 +1,108 @@
+/* =Colour Variables
+==========================================*/
+$alert-yellow: #ebe16f;
+$alert-red: #fbe3e4;
+$alert-green: #e6efc2;
+$alert-blue: #d5edf8;
+
+$black: #000;
+$white: #fff;
+$grey: #bbbbbb;
+$grey-dark: #999;
+$grey-light: #e9e9e9c0;
+
+$text-color: #2D2D2A;
+
+$tea: #CF7200;
+$primary: $tea;
+$secondary: #772014;
+$chalkboard: #393D3F;
+$wood-border: #D89D6A;
+$wood-border-dark: #c1844e;
+
+
+
+/* =Social colours
+==========================================*/
+$social-facebook: #4d70a8;
+$social-twitter: #01baf2;
+$social-google: #e3401d;
+$social-linkedin: #1687b1;
+
+
+
+/* =Wrap Width
+==========================================*/
+$wrap-restrict: 30em;
+$wrap-break: 100em;
+$wrap-wide: 62.5em;
+
+
+
+/* =Strip Padding
+==========================================*/
+$strip-padding: 4em;
+
+
+
+/* =Site Transitions
+==========================================*/
+$transition: .25s;
+$easing: ease-in-out;
+
+
+
+/* =Radius
+==========================================*/
+$radius: .4em;
+
+
+
+/* =Font Families
+==========================================*/
+// font stacks
+$sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: "Georgia", Cambria, Times New Roman, Times, serif;
+$cursive: 'Caveat', cursive;
+
+
+
+/* =Font weights in use from Typekit or Google Fonts
+==========================================*/
+$light: 100;
+$regular: 400;
+$semi: 500;
+$italic: 400;
+$bold: 700;
+
+
+
+/* =CSS Variables
+==========================================*/
+:root {
+	--background-colour: #fff;
+	--colour-primary: #{$primary};
+	--colour-secondary: #{$secondary};
+	--colour-board: #{$chalkboard};
+	--colour-wood: #{$wood-border};
+	--colour-wood-dark: #{$wood-border-dark};
+	--colour-grey-light: #{$grey-light};
+	--colour-grey-mid: #{$grey};
+	--colour-grey-dark: #{$grey-dark};
+	--text-colour: #{$text-color};
+	--font-sans: #{$sans};
+	--font-serif: #{$serif};
+	--font-cursive: #{$cursive};
+}
+
+
+
+/* =CMS Variables
+==========================================*/
+$cargo-black: #050511;
+$cargo-brand: #40EAA9;
+$cargo-secondary: #2E2E41;
+$cargo-dgrey: #848484;
+$cargo-mgrey: #CCD0D4;
+$cargo-grey: #F0F0F0;
+$cargo-font: 'Roboto', $sans;

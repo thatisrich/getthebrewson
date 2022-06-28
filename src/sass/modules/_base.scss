@@ -1,0 +1,159 @@
+/* =Base
+========================================= */
+html {
+	height: 100%;
+	position: relative;
+}
+
+html {
+	box-sizing: border-box;
+	height: 100%;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	position: relative;
+}
+
+
+
+/* =Board
+==========================================*/
+.board {
+	align-items: center;
+	background-color: var(--colour-board);
+	border: 8px solid var(--colour-wood);
+	border-color: var(--colour-wood) var(--colour-wood-dark) var(--colour-wood-dark) var(--colour-wood);
+	border-radius: .25rem;
+	box-shadow: 0 0 1rem rgba($black, .5) inset;
+	color: $white;
+	display: flex;
+	font-family: var(--font-cursive);
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 20rem;
+	padding: 1.5rem 1rem 2rem;
+}
+
+.board--message {
+	align-items: center;
+	display: flex;
+	font-size: 1.25rem;
+	justify-content: center;
+	margin: 0;
+	width: 100%;
+
+	span {
+		background-color: var(--colour-board);
+		display: block;
+		flex-grow: 0;
+		flex-shrink: 0;
+		padding: 0 1rem;
+	}
+
+	&:before,
+	&:after {
+		background-color: $white;
+		border-radius: .25rem;
+		content: '';
+		display: block;
+		flex-grow: 1;
+		flex-shrink: 1;
+		height: 2px;
+		width: 100%;
+	}
+
+}
+
+
+
+/* =Selected Brewer
+==========================================*/
+.brewer--outer {
+	margin: auto 0;
+
+	transform: rotate(-3deg);
+}
+
+.brewer {
+	display: block;
+	font-size: 2rem;
+	margin: 0;
+	text-align: center;
+	transform: translateX(-1rem);
+
+	span {
+		display: block;
+		font-size: clamp(2rem, 12vw, 6rem);
+		line-height: 1.2;
+		position: relative;
+
+		&:before,
+		&:after {
+			background-color: $white;
+			border-radius: .25rem;
+			content: '';
+			height: 3px;
+			left: 20%;
+			position: absolute;
+			width: 80%;
+		}
+
+		&:before {
+			bottom: -.25rem;
+			transform: rotate(-3deg) translateX(-.5rem);
+		}
+
+		&:after {
+			bottom: -.875rem;
+			transform: rotate(-4deg);
+		}
+
+	}
+
+}
+
+
+
+/* =Actions
+==========================================*/
+.actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+
+	.btn {
+		flex: 1;
+	}
+}
+
+
+
+/* =Brew Countdown
+==========================================*/
+.countdown {}
+
+.countdown--text {
+	color: var(--colour-primary);
+	font-family: $fancy-sans;
+	font-size: 2em;
+	margin: 0;
+}
+
+.countdown--timer {
+	font-family: $fancy-sans;
+	font-size: 4em;
+	line-height: 1;
+	margin: 0;
+	@include transition(all $transition ease-in-out);
+
+	.visible & {
+		margin: .2em 0 1em;
+	}
+
+}
