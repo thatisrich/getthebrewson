@@ -5,7 +5,7 @@ function SelectedBrewer(props) {
 		return (
 			<div className="brewer--outer">
 				<p className="brewer">
-					Looks like it's you turn{" "}
+					Looks like it's your turn{" "}
 					<span>{props.selectedBrewer.name}</span>
 				</p>
 			</div>
