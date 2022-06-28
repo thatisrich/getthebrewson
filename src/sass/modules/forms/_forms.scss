@@ -21,10 +21,10 @@ input {
 	&[type="email"],
 	&[type="number"] {
 		background-color: $white;
-		border-color: $brand-primary;
+		border-color: var(--colour-primary);
 		border-style: solid;
 		border-width: 1px;
-		border-radius: $border;
+		border-radius: $radius;
 		display: block;
 		flex-grow: 1;
 		flex-shrink: 1;
@@ -45,13 +45,17 @@ input {
 .form--countdown {
 	align-items: center;
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	gap: 0;
 	justify-content: flex-start;
+	margin: 0;
 
 	input {
+		flex-grow: 0;
+		flex-shrink: 1;
 
 		&[type="number"] {
-			border-color: transparent transparent $brand-primary;
+			border-color: transparent transparent var(--colour-primary);
 			border-radius: 0;
 			margin: 0 .5em;
 			padding: .4em 0;

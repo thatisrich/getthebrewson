@@ -1,10 +1,10 @@
 /* =Buttons
 ========================================= */
 .btn {
-	background-color: $brand-primary;
-	border-color: $brand-primary darken($brand-primary, 8%) darken($brand-primary, 15%);
+	background-color: var(--colour-primary);
+	border-color: var(--colour-primary) darken($primary, 8%) darken($primary, 15%);
 	border-style: solid;
-	border-radius: $border;
+	border-radius: $radius;
 	border-width: 1px;
 	color: $white;
 	display: block;
@@ -19,7 +19,7 @@
 
 	&:hover,
 	&:focus {
-		background-color: darken($brand-primary, 10%);
+		background-color: darken($primary, 10%);
 	}
 
 	&--remove {

@@ -1,6 +1,19 @@
+import { useRef } from "react";
 import React from "react";
 
-function SetCountdownForm() {
+function SetCountdownForm(props) {
+	const timerValue = useRef();
+
+	function updateUserTimer(event) {
+		event.preventDefault();
+		const enteredTimer = timerValue.current.value;
+		if (enteredTimer !== "") {
+			props.onSetUserTimer(enteredTimer);
+		} else {
+			props.onSetUserTimer("");
+		}
+	}
+
 	return (
 		<div>
 			<p>
@@ -8,27 +21,20 @@ function SetCountdownForm() {
 				brewer!
 			</p>
 			<form className="form--countdown">
-				<p>The new brew will be in:</p>
+				<p>Pick a new brewer in</p>
 				<input
 					className=""
-					id="countdownVal"
+					id="countdownMins"
+					onChange={updateUserTimer}
 					min="0"
 					max="300"
+					ref={timerValue}
 					type="number"
-					value="0"
 				/>
-				<label className="" htmlFor="countdownVal">
-					minutes.
+				<label className="" htmlFor="countdownMins">
+					minutes!
 				</label>
 			</form>
-			<p>
-				<small>
-					<i>
-						Remember: to get a browser notification make sure they
-						are allowed and that you don't close this tab!
-					</i>
-				</small>
-			</p>
 		</div>
 	);
 }

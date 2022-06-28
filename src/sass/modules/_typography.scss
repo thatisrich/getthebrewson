@@ -1,50 +1,65 @@
 /* =Variables
 ========================================= */
-$serif:					'Times', serif;
-$sans-serif:			Helvetica, Arial, sans-serif;
+$serif: 'Times', serif;
+$sans-serif: Helvetica, Arial, sans-serif;
 
-$fancy-sans:			'Amaranth', $sans-serif;
-$body:					$sans-serif;
+$fancy-sans: 'Amaranth', $sans-serif;
+$body: $sans-serif;
+
+
+
+/* =Base
+==========================================*/
+body {
+	color: var(--text-colour);
+	font-family: var(--font-sans);
+}
 
 
 /* =Headings
 ========================================= */
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5 {
-	color: $brand-primary;
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+	color: var(--colour-primary);
 	font-family: $fancy-sans;
 }
 
-h1, .h1 {
+h1,
+.h1 {
 	font-size: 3.6em;
 	margin: 1em 0 .5em;
 	text-align: center;
 }
 
-h2, .h2 {
+h2,
+.h2 {}
 
-}
+h3,
+.h3 {}
 
-h3, .h3 {
+h4,
+.h4 {}
 
-}
-
-h4, .h4 {
-
-}
-
-h5, .h5 {
-
-}
+h5,
+.h5 {}
 
 a,
 a:visited {
+	color: var(--text-colour);
 	text-decoration: none;
+
 	&:hover,
 	&:focus {
-
+		color: var(--text-colour);
+		text-decoration: underline;
 	}
+
 }

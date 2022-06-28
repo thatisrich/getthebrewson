@@ -10,6 +10,14 @@ function SelectedBrewer(props) {
 				</p>
 			</div>
 		);
+	} else {
+		return (
+			<div className="brewer--outer">
+				<p className="brewer">
+					<span>???</span>
+				</p>
+			</div>
+		);
 	}
 }
 

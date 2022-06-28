@@ -9,12 +9,38 @@
 
 }
 
+.pad {
+	background-color: $white;
+	border: 1px solid var(--colour-grey-light);
+	box-shadow: 0 .75rem .75rem rgba($black, .05);
+	margin: 0 0 3em;
+	padding: 2rem 1.5rem 3rem;
+	position: relative;
+	text-align: left;
+
+	&:before {
+		background-color: pink;
+		content: '';
+		height: 2px;
+		left: 0;
+		position: absolute;
+		top: 5rem;
+		width: 100%;
+	}
+
+}
+
+.pad--head {
+	font-family: var(--font-cursive);
+	font-size: 1.5rem;
+	margin: 0;
+}
+
 .brew-list {
 	font-size: 1.2em;
 	list-style: none;
-	margin: 2em 0;
+	margin: 2rem 0 0;
 	padding: 0;
-	text-align: left;
 
 	li {
 		//display: inline-block;
@@ -28,15 +54,13 @@
 }
 
 .option {
-	border: solid #a1a5bc;
+	border: solid #9198e5;
 	border-width: 0 0 1px;
-	padding: .5em 2em .5em 1em;
+	font-family: var(--font-cursive);
+	font-size: 1.5rem;
+	font-weight: 400;
+	padding: .5rem 2rem .5rem .5rem;
 	position: relative;
-
-	&:last-child {
-		border-width: 0;
-	}
-
 }
 
 .option--delete {

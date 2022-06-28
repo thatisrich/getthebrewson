@@ -6,25 +6,28 @@ import Layout from "../components/layout/Layout";
 import OpeningContent from "../components/OpeningContent";
 import BrewerList from "../components/BrewerList";
 import AddBrewerForm from "../components/AddBrewerForm";
-// import SetCountdownForm from "../components/SetCountdownForm";
+import SetCountdownForm from "../components/SetCountdownForm";
 import BrewerActions from "../components/BrewerActions";
 import SelectedBrewer from "../components/SelectedBrewer";
 
-// import Cookies from "universal-cookie";
+import CountdownTimer from "../components/CountdownTimer";
 
 function IndexPage() {
-	// const [brewerList, setBrewerList] = useState([]);
+	// Set brewer list values
 	const [brewerList, setBrewerList] = useLocalStorage("brewers", []);
-	const [formIsValid, setFormValid] = useState(true);
-	// TODO - Set the selected name on button press
 	const [selectedBrewer, setSelectedBrewer] = useState();
+
+	// Set form validation
+	const [formIsValid, setFormValid] = useState(true);
+
+	// Set initial values for countdown timer
+	const [userTimer, setUserTimer] = useState();
+	const [countdownTimer, setCountdownTimer] = useState();
+	const [showTimer, setShowTimer] = useState(false);
+	const currentDateTime = new Date();
 
 	// Add a new name to the list
 	function addBrewerHandler(brewerName) {
-		// get the current object
-		// get the total numberin the object
-		// assign id
-
 		const data = {
 			name: brewerName,
 		};
@@ -45,8 +48,13 @@ function IndexPage() {
 		const brewName =
 			brewerList[Math.floor(Math.random() * brewerList.length)];
 
+		if (userTimer) {
+			setCountdownTimer(addMinutes(currentDateTime, userTimer));
+		}
+
 		setSelectedBrewer(brewName);
 		setFormValid("true");
+		countdownTimerHandler();
 	}
 
 	// Remove / dump all entries in the list
@@ -54,28 +62,55 @@ function IndexPage() {
 		setSelectedBrewer();
 		setBrewerList([]);
 		setFormValid("true");
+		setShowTimer(false);
+	}
+
+	// Remove / dump all entries in the list
+	function setUserTimerHandler(time) {
+		setUserTimer(time);
+	}
+
+	// Snippet function to handle minutes conversion to date
+	function addMinutes(date, minutes) {
+		return new Date(date.getTime() + minutes * 60000);
+	}
+
+	function countdownTimerHandler() {
+		if (countdownTimer) {
+			setShowTimer(true);
+		} else {
+			setShowTimer(false);
+		}
 	}
 
 	return (
 		<Layout>
 			<section className="">
-				<div className="wrap">
-					<div className="brew--action">
-						<div className="countdown">
-							<p className="countdown--text">Next Brewer in:</p>
-							<p className="countdown--timer">
-								<span>0</span>
+				<OpeningContent />
+
+				<div className="layout-grid">
+					<div className="layout-item">
+						<div className="board">
+							<p className="board--message">
+								<span>Who's round is it?</span>
 							</p>
+							<SelectedBrewer selectedBrewer={selectedBrewer} />
 						</div>
 
-						<OpeningContent />
-
-						<SelectedBrewer selectedBrewer={selectedBrewer} />
-
-						<BrewerList
-							list={brewerList}
-							onRemoveBrewer={removeBrewerHandler}
+						<CountdownTimer
+							targetDate={countdownTimer}
+							timerisVisible={showTimer}
 						/>
+					</div>
+
+					<div className="layout-item">
+						<div className="pad">
+							<p className="pad--head">Potential brewers</p>
+							<BrewerList
+								list={brewerList}
+								onRemoveBrewer={removeBrewerHandler}
+							/>
+						</div>
 
 						<AddBrewerForm
 							onAddBrewer={addBrewerHandler}
@@ -83,7 +118,9 @@ function IndexPage() {
 							formIsValid={formIsValid}
 						/>
 
-						{/* <SetCountdownForm /> */}
+						<SetCountdownForm
+							onSetUserTimer={setUserTimerHandler}
+						/>
 
 						<BrewerActions
 							onRemoveBrewers={removeBrewersHandler}
