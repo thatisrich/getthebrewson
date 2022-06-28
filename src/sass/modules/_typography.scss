@@ -1,18 +1,9 @@
-/* =Variables
-========================================= */
-$serif: 'Times', serif;
-$sans-serif: Helvetica, Arial, sans-serif;
-
-$fancy-sans: 'Amaranth', $sans-serif;
-$body: $sans-serif;
-
-
-
 /* =Base
 ==========================================*/
 body {
 	color: var(--text-colour);
 	font-family: var(--font-sans);
+	font-weight: 400;
 }
 
 
@@ -29,13 +20,15 @@ h4,
 h5,
 .h5 {
 	color: var(--colour-primary);
-	font-family: $fancy-sans;
+	font-family: var(--font-sans);
+	font-weight: 700;
+	line-height: 1.2;
 }
 
 h1,
 .h1 {
-	font-size: 3.6em;
-	margin: 1em 0 .5em;
+	font-size: clamp(4rem, 10vw, 6em);
+	margin: 0;
 	text-align: center;
 }
 

@@ -5,6 +5,7 @@ module.exports = {
 	},
 	plugins: [
 		"gatsby-plugin-sass",
+		"gatsby-plugin-react-helmet",
 		{
 			resolve: "gatsby-plugin-google-tagmanager",
 			options: {
@@ -40,7 +41,7 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-google-fonts`,
 			options: {
-				fonts: [`Caveat\:400,550,700`],
+				fonts: ["Oxygen:400,700", `Caveat\:400,550,700`],
 				display: "swap",
 			},
 		},

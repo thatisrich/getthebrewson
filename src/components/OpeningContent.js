@@ -2,7 +2,7 @@ import React from "react";
 
 function OpeningContent() {
 	return (
-		<div>
+		<div className="opening-content">
 			<div className="wrap">
 				<p>
 					Can't decide whose turn it is to make a brew? Add the

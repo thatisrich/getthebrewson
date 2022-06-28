@@ -17,7 +17,22 @@ html {
 }
 
 body {
+	padding: 2rem 0;
 	position: relative;
+}
+
+
+
+/* =Intro
+==========================================*/
+.head {
+	margin: 2rem 0;
+	padding: 0 1rem;
+}
+
+.opening-content {
+	display: block;
+	margin: 3rem 0;
 }
 
 
@@ -81,8 +96,11 @@ body {
 }
 
 .brewer {
-	display: block;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 	font-size: 2rem;
+	justify-content: center;
 	margin: 0;
 	text-align: center;
 	transform: translateX(-1rem);
@@ -99,9 +117,9 @@ body {
 			border-radius: .25rem;
 			content: '';
 			height: 3px;
-			left: 20%;
+			left: 0;
 			position: absolute;
-			width: 80%;
+			width: 120%;
 		}
 
 		&:before {
@@ -140,13 +158,13 @@ body {
 
 .countdown--text {
 	color: var(--colour-primary);
-	font-family: $fancy-sans;
+	font-family: var(--font-sans);
 	font-size: 2em;
 	margin: 0;
 }
 
 .countdown--timer {
-	font-family: $fancy-sans;
+	font-family: var(--font-sans);
 	font-size: 4em;
 	line-height: 1;
 	margin: 0;
