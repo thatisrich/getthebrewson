@@ -47,10 +47,32 @@
 	flex-direction: column;
 	line-height: 1.25rem;
 	padding: 0 0.75rem 0 0.75rem;
+
+	transition: color $transition $easing;
+}
+
+@keyframes dangerFlash {
+
+	0% {
+		color: var(--text-colour);
+	}
+
+	40% {
+		color: #ff0000;
+	}
+
+	80% {
+		color: #ff0000;
+	}
+
+	100% {
+		color: var(--text-colour);
+	}
+
 }
 
 .show-counter .countdown.danger {
-	color: #ff0000;
+	animation: dangerFlash 1s linear infinite;
 }
 
 .show-counter .countdown>p {
