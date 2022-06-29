@@ -1,13 +1,13 @@
 import React from "react";
 
-function BrewerActions(props) {
+function BrewerActions({ onSelectBrewer, onRemoveBrewers }) {
 	return (
 		<div className="actions">
 			<button
 				className="btn"
 				id="brews"
 				title="Shuffle through the names and pick a brewer!"
-				onClick={props.onSelectBrewer}
+				onClick={onSelectBrewer}
 			>
 				Pick a Brewer
 			</button>
@@ -15,7 +15,7 @@ function BrewerActions(props) {
 				className="btn btn--remove"
 				id="clearbrewers"
 				title="Start over, clear all brewers from the list"
-				onClick={props.onRemoveBrewers}
+				onClick={onRemoveBrewers}
 			>
 				Remove all Brewers
 			</button>

@@ -10,6 +10,7 @@ const CountdownTimer = ({
 	isCounting,
 	onSetIsCounting,
 	onResetTimer,
+	onSelectBrewer,
 }) => {
 	if (timerisVisible) {
 		if (!isCounting) {
@@ -17,6 +18,7 @@ const CountdownTimer = ({
 				<ExpiredNotice
 					onTimeVisible={timerisVisible}
 					notificationPermissions={notificationPermissions}
+					onSelectBrewer={onSelectBrewer}
 				/>
 			);
 		} else {
@@ -49,28 +51,28 @@ const ShowCounter = ({ setIsCounting, targetDate, onResetTimer }) => {
 					type={"Days"}
 					isDanger={days <= 3}
 				/>
-				<p>:</p>
-				<DateTimeDisplay
-					value={hours}
-					type={"Hours"}
-					isDanger={false}
-				/>
 				<p>:</p> */}
+					<DateTimeDisplay
+						value={hours}
+						type={"Hours"}
+						isDanger={minutes === 0 && seconds <= 10}
+					/>
+					<p>:</p>
 					<DateTimeDisplay
 						value={minutes}
 						type={"Mins"}
-						isDanger={minutes == 0 && seconds <= 10}
+						isDanger={minutes === 0 && seconds <= 10}
 					/>
 					<p>:</p>
 					<DateTimeDisplay
 						value={seconds}
 						type={"Seconds"}
-						isDanger={minutes == 0 && seconds <= 10}
+						isDanger={minutes === 0 && seconds <= 10}
 					/>
 				</div>
 			</div>
 			<button
-				class="btn btn--remove"
+				className="btn btn--remove"
 				data-width="full"
 				onClick={onResetTimer}
 				title="Remove the countdown timer"
@@ -81,14 +83,17 @@ const ShowCounter = ({ setIsCounting, targetDate, onResetTimer }) => {
 	);
 };
 
-const ExpiredNotice = ({ onTimeVisible, notificationPermissions }) => {
+const ExpiredNotice = ({
+	onTimeVisible,
+	notificationPermissions,
+	onSelectBrewer,
+}) => {
 	useEffect(() => {
 		function browserNotificationHandler() {
 			if (notificationPermissions === "granted") {
-				// TODO - Fix image
-				const img = "/images/svgs/icon-notification.svg";
+				const img = "/images/browser-notification.jpg";
 				const text =
-					"Thanks for the round! Time to start another round!";
+					"Time to start another round! Who's it going to be this time?";
 				const notification = new Notification("Get the Brews on!", {
 					body: text,
 					icon: img,
@@ -99,10 +104,20 @@ const ExpiredNotice = ({ onTimeVisible, notificationPermissions }) => {
 	}, [onTimeVisible, notificationPermissions]);
 
 	return (
-		<div className="expired-notice">
-			<span>Time's up!</span>
-			<p>Let's see who's turn it is to make the brew next!</p>
-		</div>
+		<>
+			<div className="expired-notice">
+				<span>Time's up!</span>
+				<p>Let's see who's turn it is to make the brew next!</p>
+			</div>
+			<button
+				className="btn"
+				data-width="full"
+				onClick={onSelectBrewer}
+				title="Pick another brewer!"
+			>
+				Pick another brewer!
+			</button>
+		</>
 	);
 };
 
