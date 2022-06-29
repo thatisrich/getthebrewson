@@ -94,12 +94,22 @@ function IndexPage() {
 	}
 
 	// Setting up browser notifications
+	const [isNotificationSet, setIsNotificationSet] = useState(false);
 	const [notificationPermissions, setNotificationPermissions] = useState();
 
-	// Ask for notification access on load
-	Notification.requestPermission().then(function (result) {
-		setNotificationPermissions(result);
-	});
+	function askNotificationPermission() {
+		if (!isNotificationSet) {
+			if (typeof Notification !== "undefined") {
+				// Ask for notification access on load
+				Notification.requestPermission().then(function (result) {
+					setNotificationPermissions(result);
+				});
+				setIsNotificationSet(true);
+			}
+		}
+	}
+
+	askNotificationPermission();
 
 	return (
 		<Layout>
@@ -143,6 +153,7 @@ function IndexPage() {
 							isCounting={isCounting}
 							onSetIsCounting={setIsCounting}
 							onResetTimer={resetCountdownTimer}
+							onSelectBrewer={selectBrewerHandler}
 						/>
 					</div>
 
