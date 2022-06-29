@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 import Layout from "../components/layout/Layout";
@@ -11,8 +12,6 @@ import BrewerActions from "../components/BrewerActions";
 import SelectedBrewer from "../components/SelectedBrewer";
 import CountdownTimer from "../components/CountdownTimer";
 
-import { Helmet } from "react-helmet";
-
 function IndexPage() {
 	// Set brewer list values
 	const [brewerList, setBrewerList] = useLocalStorage("brewers", []);
@@ -22,10 +21,11 @@ function IndexPage() {
 	const [formIsValid, setFormValid] = useState(true);
 
 	// Set initial values for countdown timer
+	const [currentDateTime, setCurrentDateTime] = useState(new Date());
 	const [userTimer, setUserTimer] = useState();
-	const [countdownTimer, setCountdownTimer] = useState();
+	const [countdownTimer, setCountdownTimer] = useState(currentDateTime);
 	const [showTimer, setShowTimer] = useState(false);
-	const currentDateTime = new Date();
+	const [isCounting, setIsCounting] = useState(false);
 
 	// Add a new name to the list
 	function addBrewerHandler(brewerName) {
@@ -47,17 +47,24 @@ function IndexPage() {
 	// Select an entry from the list
 	function selectBrewerHandler() {
 		if (brewerList.length) {
+			resetCountdownTimer();
 			const brewName =
 				brewerList[Math.floor(Math.random() * brewerList.length)];
 
-			if (userTimer) {
+			if (userTimer > 0) {
+				setCurrentDateTime(new Date());
 				setCountdownTimer(addMinutes(currentDateTime, userTimer));
+				setShowTimer(true);
+				setIsCounting(true);
+			} else {
+				setShowTimer(false);
+				setIsCounting(false);
 			}
 
 			setSelectedBrewer(brewName);
 			setFormValid(true);
-			countdownTimerHandler();
 		} else {
+			setIsCounting(false);
 			setFormValid(false);
 		}
 	}
@@ -75,18 +82,24 @@ function IndexPage() {
 		setUserTimer(time);
 	}
 
+	function resetCountdownTimer() {
+		setCountdownTimer(0);
+		setShowTimer(false);
+		setIsCounting(false);
+	}
+
 	// Snippet function to handle minutes conversion to date
 	function addMinutes(date, minutes) {
 		return new Date(date.getTime() + minutes * 60000);
 	}
 
-	function countdownTimerHandler() {
-		if (countdownTimer) {
-			setShowTimer(true);
-		} else {
-			setShowTimer(false);
-		}
-	}
+	// Setting up browser notifications
+	const [notificationPermissions, setNotificationPermissions] = useState();
+
+	// Ask for notification access on load
+	Notification.requestPermission().then(function (result) {
+		setNotificationPermissions(result);
+	});
 
 	return (
 		<Layout>
@@ -126,6 +139,10 @@ function IndexPage() {
 						<CountdownTimer
 							targetDate={countdownTimer}
 							timerisVisible={showTimer}
+							notificationPermissions={notificationPermissions}
+							isCounting={isCounting}
+							onSetIsCounting={setIsCounting}
+							onResetTimer={resetCountdownTimer}
 						/>
 					</div>
 
